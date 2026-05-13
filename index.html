@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talent Zonder Diploma &mdash; Carlos G.V. Erselina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ====================================================
+   DESIGN SYSTEM
+   Palette: Oranje #E8650A / Groen #7A9E3B / Grijs #3A3A3A
+   Typografie: Playfair Display (koppen) + Source Serif 4 (broodtekst)
+   ==================================================== */
+:root {
+  --oranje:       #E8650A;
+  --oranje-licht: #F5892E;
+  --oranje-diep:  #B34D07;
+  --groen:        #7A9E3B;
+  --groen-licht:  #9BBF55;
+  --groen-diep:   #567028;
+  --grijs:        #3A3A3A;
+  --grijs-licht:  #6B6B6B;
+  --grijs-zacht:  #F4F2EF;
+  --grijs-rand:   #E0DDD8;
+  --zwart:        #0D0D0D;
+  --wit:          #FDFCFA;
+  --schok:        #CC1A1A;
+
+  --kop-font:     'Playfair Display', Georgia, serif;
+  --tekst-font:   'Source Serif 4', Georgia, serif;
+  --mono-font:    'DM Mono', monospace;
+
+  --max-breed:    820px;
+  --kolom:        680px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 18px; }
+
+body {
+  font-family: var(--tekst-font);
+  background: var(--wit);
+  color: var(--grijs);
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===================== VOORTGANGSBALK */
+#vb {
+  position: fixed; top: 0; left: 0; height: 4px; width: 0;
+  background: linear-gradient(90deg, var(--oranje), var(--groen));
+  z-index: 9999; transition: width .1s linear;
+}
+
+/* ===================== NAVIGATIEBALK */
+nav.topbalk {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 56px;
+  background: rgba(253,252,250,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--grijs-rand);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 36px;
+  z-index: 1000;
+}
+nav.topbalk .merk {
+  font-family: var(--kop-font);
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--grijs);
+}
+nav.topbalk a.nav-link {
+  font-size: .78rem;
+  font-weight: 500;
+  color: var(--oranje);
+  text-decoration: none;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+nav.topbalk a.nav-link:hover { border-color: var(--oranje); }
+
+/* ===================== COVER */
+.cover {
+  min-height: 100vh;
+  background: var(--zwart);
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 0 0;
+  position: relative;
+  overflow: hidden;
+  padding-top: 56px;
+}
+.cover-canvas {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 90% 60% at 15% 20%, rgba(232,101,10,.22) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 80%, rgba(122,158,59,.14) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 80% at 50% 50%, rgba(13,13,13,1) 30%, transparent 100%);
+}
+.cover-raster {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.cover-inhoud {
+  position: relative; z-index: 2;
+  padding: 80px 60px 80px;
+  max-width: 1100px;
+}
+.cover-label {
+  font-family: var(--mono-font);
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--oranje-licht);
+  margin-bottom: 28px;
+}
+.cover h1 {
+  font-family: var(--kop-font);
+  font-size: clamp(52px, 9vw, 108px);
+  font-weight: 900;
+  line-height: .95;
+  letter-spacing: -.02em;
+  color: var(--wit);
+  margin-bottom: 0;
+}
+.cover h1 em {
+  font-style: italic;
+  color: var(--oranje-licht);
+}
+.cover-subtitel {
+  font-family: var(--kop-font);
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,255,255,.42);
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+.cover-auteur {
+  font-family: var(--tekst-font);
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.55);
+  margin-top: 48px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border-top: 1px solid rgba(255,255,255,.12);
+  padding-top: 20px;
+  display: inline-block;
+}
+.cover-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 36px;
+  background: var(--oranje);
+  color: #fff;
+  font-family: var(--mono-font);
+  font-size: .78rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 2px;
+  transition: background .2s, transform .15s;
+}
+.cover-cta:hover { background: var(--oranje-diep); transform: translateY(-2px); }
+.cover-schok {
+  position: absolute; right: 60px; bottom: 80px;
+  font-family: var(--kop-font);
+  font-size: clamp(80px, 14vw, 200px);
+  font-weight: 900;
+  font-style: italic;
+  color: rgba(232,101,10,.06);
+  line-height: 1;
+  user-select: none;
+  letter-spacing: -.04em;
+}
+
+/* ===================== OPENINGSZIN */
+.openingszin {
+  background: var(--grijs);
+  color: var(--wit);
+  padding: 100px 40px;
+  text-align: center;
+}
+.openingszin p {
+  font-family: var(--kop-font);
+  font-size: clamp(22px, 3.8vw, 42px);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.35;
+  color: rgba(255,255,255,.88);
+  max-width: 820px;
+  margin: 0 auto 14px;
+}
+.openingszin p strong { color: var(--oranje-licht); font-style: normal; font-weight: 700; }
+.openingszin p.klein { font-size: clamp(15px, 2vw, 22px); color: rgba(255,255,255,.35); margin-top: 6px; }
+
+/* ===================== SCHOK-BANNER */
+.schok-banner {
+  background: var(--schok);
+  color: #fff;
+  padding: 36px 40px;
+  text-align: center;
+}
+.schok-banner p {
+  font-family: var(--kop-font);
+  font-size: clamp(15px, 2vw, 20px);
+  font-style: italic;
+  letter-spacing: .02em;
+}
+
+/* ===================== SECTIE */
+section { padding: 88px 40px; }
+section.grijs-bg { background: var(--grijs-zacht); }
+section.donker { background: var(--grijs); color: var(--wit); }
+section.oranje-accent { border-left: 6px solid var(--oranje); }
+
+.binnenste { max-width: var(--kolom); margin: 0 auto; }
+.binnenste-breed { max-width: var(--max-breed); margin: 0 auto; }
+
+/* ===================== DEEL-HEADER */
+.deel-header {
+  background: var(--zwart);
+  color: var(--wit);
+  padding: 110px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.deel-header-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 10% 50%, rgba(232,101,10,.18) 0%, transparent 60%);
+}
+.deel-header-lijn {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 6px;
+  background: linear-gradient(180deg, var(--oranje), var(--groen));
+}
+.deel-header .deel-nr {
+  font-family: var(--mono-font);
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--oranje-licht);
+  margin-bottom: 14px;
+  position: relative;
+}
+.deel-header h2 {
+  font-family: var(--kop-font);
+  font-size: clamp(34px, 6vw, 68px);
+  font-weight: 900;
+  letter-spacing: -.02em;
+  line-height: 1.0;
+  position: relative;
+}
+.deel-header p.ondertitel {
+  font-family: var(--tekst-font);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: rgba(255,255,255,.38);
+  margin-top: 14px;
+  position: relative;
+}
+
+/* ===================== TYPOGRAFIE HOOFDTEKST */
+h1.hfd {
+  font-family: var(--kop-font);
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 900;
+  letter-spacing: -.025em;
+  line-height: 1.05;
+  color: var(--zwart);
+  margin-bottom: 8px;
+  padding-top: 72px;
+  border-top: 2px solid var(--grijs-rand);
+  margin-top: 72px;
+}
+h1.hfd:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+h1.hfd .hfd-nr {
+  display: block;
+  font-family: var(--mono-font);
+  font-size: .72rem;
+  letter-spacing: .18em;
+  font-weight: 400;
+  color: var(--oranje);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+h2.par {
+  font-family: var(--kop-font);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--zwart);
+  margin-top: 52px;
+  margin-bottom: 16px;
+}
+p.brood {
+  font-family: var(--tekst-font);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--grijs);
+  margin-bottom: 22px;
+}
+p.citaat {
+  font-family: var(--kop-font);
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--grijs);
+  background: var(--grijs-zacht);
+  border-left: 4px solid var(--oranje);
+  padding: 20px 26px;
+  margin: 28px 0;
+  border-radius: 0 4px 4px 0;
+}
+p.citaat.groen { border-color: var(--groen); }
+
+/* ===================== PULLQUOTE */
+.pullquote {
+  margin: 64px 0;
+  padding: 56px 48px;
+  background: var(--zwart);
+  border-radius: 4px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.pullquote::before {
+  content: '\201C';
+  position: absolute; top: -36px; left: 24px;
+  font-family: var(--kop-font);
+  font-size: 220px;
+  color: rgba(232,101,10,.07);
+  line-height: 1;
+}
+.pullquote p {
+  font-family: var(--kop-font);
+  font-size: clamp(20px, 3vw, 30px);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--wit);
+  line-height: 1.4;
+  position: relative;
+}
+.pullquote .bron {
+  display: block;
+  font-family: var(--mono-font);
+  font-size: .72rem;
+  color: rgba(255,255,255,.32);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-top: 18px;
+  font-style: normal;
+}
+
+/* ===================== GETALLEN-BLOK */
+.stat-rij {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin: 48px 0;
+}
+.stat-kaart {
+  padding: 30px 20px;
+  border-radius: 4px;
+  text-align: center;
+}
+.stat-kaart.oranje { background: var(--oranje); }
+.stat-kaart.groen  { background: var(--groen); }
+.stat-kaart.grijs  { background: var(--grijs); }
+.stat-kaart.zwart  { background: var(--zwart); }
+.stat-kaart .getal {
+  display: block;
+  font-family: var(--kop-font);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: -.03em;
+  color: #fff;
+  line-height: 1;
+}
+.stat-kaart .label {
+  display: block;
+  font-family: var(--mono-font);
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.52);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* ===================== VISUELE BLOKKEN */
+.viz {
+  margin: 56px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--grijs-zacht);
+  border: 1px solid var(--grijs-rand);
+}
+.viz svg { display: block; width: 100%; }
+.viz-cap { padding: 18px 26px 22px; background: var(--grijs-zacht); }
+.viz-label {
+  font-family: var(--mono-font);
+  font-size: .68rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--oranje);
+  margin-bottom: 5px;
+}
+.viz-cap p { font-size: .88rem; color: var(--grijs-licht); line-height: 1.55; }
+
+/* ===================== TABEL */
+.tbl-wrap { margin: 40px 0; overflow-x: auto; }
+table.luxe {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 0 var(--grijs-rand), 0 4px 24px rgba(0,0,0,.06);
+}
+table.luxe thead tr { background: var(--grijs); }
+table.luxe thead th {
+  padding: 14px 18px;
+  font-family: var(--mono-font);
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.58);
+  text-align: left;
+  white-space: nowrap;
+}
+table.luxe tbody tr:nth-child(odd)  { background: #fff; }
+table.luxe tbody tr:nth-child(even) { background: var(--grijs-zacht); }
+table.luxe td {
+  padding: 14px 18px;
+  font-size: .88rem;
+  color: var(--grijs);
+  border-bottom: 1px solid var(--grijs-rand);
+  vertical-align: top;
+  line-height: 1.5;
+}
+table.luxe td:first-child { font-weight: 600; color: var(--zwart); }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 2px; font-size: .72rem; font-weight: 600; font-family: var(--mono-font); letter-spacing: .06em; }
+.badge-rood  { background: rgba(204,26,26,.1);  color: #8B0000; }
+.badge-groen { background: rgba(122,158,59,.12); color: var(--groen-diep); }
+.badge-oranje{ background: rgba(232,101,10,.1);  color: var(--oranje-diep); }
+
+/* ===================== RICHTINGEN-GRID */
+.richt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 40px 0;
+}
+.richt-kaart {
+  background: #fff;
+  border: 1px solid var(--grijs-rand);
+  border-top: 4px solid var(--oranje);
+  border-radius: 4px;
+  padding: 28px 24px;
+}
+.richt-kaart:nth-child(even) { border-top-color: var(--groen); }
+.richt-kaart .nr {
+  font-family: var(--kop-font);
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--grijs-rand);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.richt-kaart .titel { font-size: .95rem; font-weight: 700; color: var(--zwart); margin-bottom: 8px; }
+.richt-kaart .body  { font-size: .85rem; color: var(--grijs-licht); line-height: 1.6; }
+
+/* ===================== INHOUDSOPGAVE */
+.iog { background: var(--grijs-zacht); padding: 80px 40px; }
+.iog-binnenste { max-width: var(--max-breed); margin: 0 auto; }
+.iog h2 {
+  font-family: var(--kop-font);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 900;
+  letter-spacing: -.02em;
+  color: var(--zwart);
+  margin-bottom: 48px;
+}
+.iog-deel {
+  font-family: var(--mono-font);
+  font-size: .7rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--grijs-licht);
+  margin: 36px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--grijs-rand);
+}
+.iog a.hfd-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--kop-font);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--oranje);
+  text-decoration: none;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--grijs-rand);
+  transition: color .15s, padding-left .15s;
+}
+.iog a.hfd-link:hover { color: var(--oranje-diep); padding-left: 6px; }
+.iog a.hfd-link .pijl { font-size: .8rem; opacity: .5; }
+.iog a.sub-link {
+  display: block;
+  font-size: .85rem;
+  color: var(--oranje);
+  text-decoration: none;
+  padding: 4px 0 4px 22px;
+  opacity: .65;
+  transition: opacity .15s;
+}
+.iog a.sub-link:hover { opacity: 1; }
+
+/* ===================== NAWOORD */
+.nawoord {
+  background: var(--grijs-zacht);
+  padding: 88px 40px;
+  text-align: center;
+}
+.nawoord h2 {
+  font-family: var(--kop-font);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 900;
+  letter-spacing: -.02em;
+  margin-bottom: 32px;
+  color: var(--zwart);
+}
+.nawoord p {
+  font-family: var(--tekst-font);
+  font-size: 1.05rem;
+  color: var(--grijs);
+  line-height: 1.85;
+  max-width: 620px;
+  margin: 0 auto 18px;
+}
+.nawoord p.wendy {
+  font-style: italic;
+  color: var(--grijs-licht);
+  font-size: .95rem;
+  margin-top: 32px;
+}
+
+/* ===================== COLOFON */
+.colofon {
+  background: var(--zwart);
+  color: rgba(255,255,255,.28);
+  text-align: center;
+  padding: 48px 40px;
+  font-family: var(--mono-font);
+  font-size: .72rem;
+  letter-spacing: .08em;
+  line-height: 2.2;
+}
+.colofon strong { color: rgba(255,255,255,.6); }
+
+/* ===================== TERUG-NAAR-TOP */
+#tnt {
+  position: fixed; bottom: 28px; right: 28px;
+  background: var(--oranje);
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  padding: 10px 18px;
+  font-family: var(--mono-font);
+  font-size: .72rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  z-index: 999;
+  display: none;
+  transition: background .2s;
+}
+#tnt:hover { background: var(--oranje-diep); }
+#tnt.zichtbaar { display: block; }
+
+/* ===================== NIEUWE PAGINA'S: extra stijlen */
+.waarschuwingsbalk {
+  background: var(--schok);
+  color: #fff;
+  padding: 32px 40px;
+  text-align: center;
+}
+.waarschuwingsbalk p {
+  font-family: var(--kop-font);
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-style: italic;
+}
+.driekolom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 40px 0;
+}
+.driekolom-kaart {
+  background: #fff;
+  border: 1px solid var(--grijs-rand);
+  border-radius: 4px;
+  padding: 24px 20px;
+}
+.driekolom-kaart .kop {
+  font-family: var(--mono-font);
+  font-size: .68rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--oranje);
+  margin-bottom: 10px;
+}
+.driekolom-kaart p { font-size: .88rem; color: var(--grijs); line-height: 1.6; }
+
+/* ===================== RESPONSIVE */
+@media(max-width: 700px) {
+  .cover-inhoud { padding: 60px 28px; }
+  section { padding: 60px 24px; }
+  .iog, .nawoord { padding: 60px 24px; }
+  .deel-header { padding: 80px 28px; }
+  .richt-grid { grid-template-columns: 1fr; }
+  .driekolom { grid-template-columns: 1fr; }
+  .stat-rij { grid-template-columns: 1fr 1fr; }
+  nav.topbalk { padding: 0 20px; }
+  .cover-schok { display: none; }
+}
+</style>
+</head>
+<body id="top">
+
+<div id="vb"></div>
+
+<!-- NAV -->
+<nav class="topbalk">
+  <span class="merk">Talent Zonder Diploma</span>
+  <a href="#iog" class="nav-link">Inhoud</a>
+</nav>
+
+<!-- ========================================================
+     COVER
+     ======================================================== -->
+<div class="cover">
+  <div class="cover-canvas"></div>
+  <div class="cover-raster"></div>
+  <span class="cover-schok">Nee.</span>
+  <div class="cover-inhoud">
+    <p class="cover-label">Voorpublicatie 1.0 &mdash; Fundamentversie</p>
+    <h1>Talent<br><em>Zonder</em><br>Diploma</h1>
+    <p class="cover-subtitel">Het systeem zal dit niet leuk vinden</p>
+    <p class="cover-auteur">Carlos G.V. Erselina</p>
+    <br>
+    <a href="#begin" class="cover-cta">Lees het boek &darr;</a>
+  </div>
+</div>
+
+<span id="begin" style="display:block;height:56px;margin-top:-56px;visibility:hidden;"></span>
+<!-- OPENINGSZIN -->
+<div class="openingszin">
+  <p>Ze vroegen mij om hun organisatie te <strong>redden</strong>.</p>
+  <p class="klein">Diezelfde week hadden ze mijn sollicitatie afgewezen.</p>
+  <p class="klein" style="color:rgba(255,255,255,.18);font-size:clamp(13px,1.5vw,17px);">Reden: geen diploma.</p>
+</div>
+
+<!-- SCHOK-BANNER -->
+<div class="schok-banner">
+  <p>Dit boek is geen klacht. Het is een dissectie. En het zal pijn doen.</p>
+</div>
+
+<!-- WAARSCHUWING -->
+<section class="grijs-bg">
+  <div class="binnenste" style="text-align:center;">
+    <p style="font-family:var(--mono-font);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oranje);margin-bottom:28px;">Waarschuwing</p>
+    <p style="font-family:var(--kop-font);font-size:clamp(18px,2.8vw,28px);font-style:italic;color:var(--zwart);line-height:1.45;margin-bottom:14px;">Ze zeiden dat talent meetbaar is. Dat een diploma bepaalt wie telt. Dat wie buiten het systeem valt, daar ook thuishoort.</p>
+    <p style="font-family:var(--kop-font);font-size:clamp(16px,2.2vw,22px);font-style:italic;color:var(--grijs-licht);margin-bottom:14px;">Ze vergaten één ding.</p>
+    <p style="font-family:var(--kop-font);font-size:clamp(18px,2.8vw,28px);font-weight:700;color:var(--oranje);line-height:1.4;margin-bottom:20px;">Sommige mensen zien meer dan het systeem ooit kan bevatten.</p>
+    <p style="font-size:.95rem;font-style:italic;color:var(--grijs-licht);">Dit is het verhaal van iemand die werd afgeschreven &mdash; en vervolgens werd ingehuurd om de schade van datzelfde systeem te herstellen.</p>
+  </div>
+</section>
+
+<!-- ========================================================
+     INHOUDSOPGAVE
+     ======================================================== -->
+<div class="iog" id="iog">
+  <div class="iog-binnenste">
+    <h2>Inhoudsopgave</h2>
+    <a href="#overditboek" class="hfd-link">Over dit boek <span class="pijl">&#8250;</span></a>
+
+    <div class="iog-deel">Deel I &mdash; Hoe ik gevormd werd buiten het systeem</div>
+    <a href="#h1" class="hfd-link">Hoofdstuk 1 &mdash; De vader die mij leerde denken <span class="pijl">&#8250;</span></a>
+    <a href="#h1-1" class="sub-link">1.1 &nbsp; Een man bij wie niets verboden was</a>
+    <a href="#h1-2" class="sub-link">1.2 &nbsp; Uitgeleerd bestaat niet</a>
+    <a href="#h1-3" class="sub-link">1.3 &nbsp; Denken als sport</a>
+    <a href="#h1-4" class="sub-link">1.4 &nbsp; Wat hij mij werkelijk gaf</a>
+
+    <a href="#h2" class="hfd-link">Hoofdstuk 2 &mdash; School zei: jij bent fout <span class="pijl">&#8250;</span></a>
+    <a href="#h2-1" class="sub-link">2.1 &nbsp; Het moment waarop zwijgen werd aangeleerd</a>
+    <a href="#h2-2" class="sub-link">2.2 &nbsp; De lom-school en wat ze vergaten te vertellen</a>
+    <a href="#h2-3" class="sub-link">2.3 &nbsp; Wat ik in de plaats kreeg</a>
+    <a href="#h2-4" class="sub-link">2.4 &nbsp; Wat het systeem niet snapt aan afwijking</a>
+
+    <a href="#h3" class="hfd-link">Hoofdstuk 3 &mdash; Wendy <span class="pijl">&#8250;</span></a>
+    <a href="#h3-1" class="sub-link">3.1 &nbsp; Vijfendertig jaar</a>
+    <a href="#h3-2" class="sub-link">3.2 &nbsp; De stem die mijn stem droeg</a>
+    <a href="#h3-3" class="sub-link">3.3 &nbsp; Hoe ze het deed</a>
+    <a href="#h3-4" class="sub-link">3.4 &nbsp; Het allerlaatste wat ze zei</a>
+    <a href="#h3-5" class="sub-link">3.5 &nbsp; Wat haar afwezigheid mij leerde</a>
+
+    <div class="iog-deel">Deel II &mdash; De paradox van de gevraagde buitenstaander</div>
+    <a href="#h4" class="hfd-link">Hoofdstuk 4 &mdash; Honderd opdrachtgevers, nul aanstellingen <span class="pijl">&#8250;</span></a>
+    <a href="#h4-1" class="sub-link">4.1 &nbsp; Een carri&egrave;re die niet mocht bestaan</a>
+    <a href="#h4-2" class="sub-link">4.2 &nbsp; Randstad, KPMG, Amsterdam &mdash; en toch nee</a>
+    <a href="#h4-3" class="sub-link">4.3 &nbsp; De vraag die ik het meest vreesde</a>
+    <a href="#h4-4" class="sub-link">4.4 &nbsp; Wat er dan gebeurde</a>
+    <a href="#h4-5" class="sub-link">4.5 &nbsp; De wond die maar niet heelt</a>
+
+    <a href="#h5" class="hfd-link">Hoofdstuk 5 &mdash; Drie momenten die alles zeggen <span class="pijl">&#8250;</span></a>
+    <a href="#h5-1" class="sub-link">5.1 &nbsp; De directeur die mij uitnodigde en afwees</a>
+    <a href="#h5-2" class="sub-link">5.2 &nbsp; Het team dat vastliep</a>
+    <a href="#h5-3" class="sub-link">5.3 &nbsp; De procedure die mij buitensloot en daarna vroeg</a>
+
+    <a href="#h6" class="hfd-link">Hoofdstuk 6 &mdash; Het systeem meet, maar begrijpt niet <span class="pijl">&#8250;</span></a>
+    <a href="#h6-1" class="sub-link">6.1 &nbsp; Gereedschap dat niet voor talent gemaakt is</a>
+    <a href="#h6-2" class="sub-link">6.2 &nbsp; Wat selectie werkelijk doet</a>
+    <a href="#h6-3" class="sub-link">6.3 &nbsp; De eerlijke kant van het systeem</a>
+    <a href="#h6-4" class="sub-link">6.4 &nbsp; Waar het wel klopt &mdash; en waarom het toch faalt</a>
+
+    <div class="iog-deel">Deel III &mdash; Wat talent werkelijk is</div>
+    <a href="#h7" class="hfd-link">Hoofdstuk 7 &mdash; De anatomie van inzicht <span class="pijl">&#8250;</span></a>
+    <a href="#h7-1" class="sub-link">7.1 &nbsp; Wat ik zie als ik een kamer binnenloop</a>
+    <a href="#h7-2" class="sub-link">7.2 &nbsp; Patronen lezen die anderen niet zien</a>
+    <a href="#h7-3" class="sub-link">7.3 &nbsp; Hoe het voelt om altijd de enige te zijn die het ziet</a>
+    <a href="#h7-4" class="sub-link">7.4 &nbsp; Waarom dit niet aanleerbaar is</a>
+
+    <a href="#h8" class="hfd-link">Hoofdstuk 8 &mdash; De prijs van het buitenstaanderschap <span class="pijl">&#8250;</span></a>
+    <a href="#h9" class="hfd-link">Hoofdstuk 9 &mdash; Het scharnierpunt <span class="pijl">&#8250;</span></a>
+
+    <div class="iog-deel">Deel IV &mdash; De stem die te lang werd ingehouden</div>
+    <a href="#h10" class="hfd-link">Hoofdstuk 10 &mdash; Waarom ik nu pas spreek <span class="pijl">&#8250;</span></a>
+    <a href="#h11" class="hfd-link">Hoofdstuk 11 &mdash; Wat dit boek wil <span class="pijl">&#8250;</span></a>
+
+    <div class="iog-deel">Deel V &mdash; Nieuwe pagina's (door de auteur)</div>
+    <a href="#h12" class="hfd-link">Hoofdstuk 12 &mdash; De architectuur van het buitenstaanderschap <span class="pijl">&#8250;</span></a>
+    <a href="#h13" class="hfd-link">Hoofdstuk 13 &mdash; Wat organisaties werkelijk zoeken &mdash; maar niet durven zeggen <span class="pijl">&#8250;</span></a>
+    <a href="#h14" class="hfd-link">Hoofdstuk 14 &mdash; De ontleding van een systeem dat niet kapot kan gaan <span class="pijl">&#8250;</span></a>
+    <a href="#h15" class="hfd-link">Hoofdstuk 15 &mdash; De mens zonder categorie <span class="pijl">&#8250;</span></a>
+
+    <a href="#nawoord" class="hfd-link">Nawoord &mdash; Nooit uitgeleerd <span class="pijl">&#8250;</span></a>
+  </div>
+</div>
+
+<!-- ========================================================
+     OVER DIT BOEK
+     ======================================================== -->
+<section id="overditboek">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">Over dit boek</h1>
+
+    <p class="brood">Hij had niets van wat het systeem waardevol noemt. Geen diploma. Geen keurmerk. Geen bewijs op papier dat hij mee mocht doen. Maar hij had alles wat datzelfde systeem nooit leert: inzicht, scherpte, lef, intuïtie, menselijk verstand. Het vermogen patronen te zien die anderen niet eens herkennen als ze er recht in kijken.</p>
+    <p class="brood">Carlos Erselina werd door scholen genegeerd, door systemen verkeerd begrepen, door het onderwijs afgeschreven. Een jongen die op papier nergens thuishoorde &mdash; totdat de wereld volwassen genoeg werd om hem te vragen.</p>
+
+    <div class="stat-rij">
+      <div class="stat-kaart oranje"><span class="getal">100+</span><span class="label">Opdrachtgevers die hem inhuurden voor wat ze zelf niet konden</span></div>
+      <div class="stat-kaart grijs"><span class="getal">0</span><span class="label">Aanstellingen die hij ooit in dienst kreeg</span></div>
+      <div class="stat-kaart groen"><span class="getal">35</span><span class="label">Jaar vriendschap met Wendy &mdash; de stem die zijn stem droeg</span></div>
+      <div class="stat-kaart zwart"><span class="getal">1</span><span class="label">Stem. Eindelijk. Volledig. Zonder apologie.</span></div>
+    </div>
+
+    <p class="brood">Talent Zonder Diploma is geen biografie. Het is een dissectie &mdash; een openhartoperatie zonder verdoving op een samenleving die zegt dat iedereen gelijke kansen heeft, maar structureel wegkijkt als talent niet in de juiste vorm komt.</p>
+  </div>
+</section>
+
+<!-- ========================================================
+     DEEL I
+     ======================================================== -->
+<div class="deel-header">
+  <div class="deel-header-glow"></div>
+  <div class="deel-header-lijn"></div>
+  <p class="deel-nr">Deel I</p>
+  <h2>Hoe ik gevormd werd<br>buiten het systeem</h2>
+  <p class="ondertitel">De formatie van een ongewone geest</p>
+</div>
+
+<!-- H1 -->
+<section id="h1">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 1</span>
+      De vader die mij leerde denken
+    </h1>
+
+    <!-- VIZ 1: vader-gesprek -->
+    <div class="viz">
+      <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="300" fill="#F4F2EF"/>
+        <!-- tijdlabel -->
+        <text x="380" y="22" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="2">CIRCA 1982 &mdash; WOONKAMER, AMSTERDAM</text>
+        <!-- lijn -->
+        <line x1="60" y1="34" x2="700" y2="34" stroke="#E0DDD8" stroke-width="1"/>
+        <!-- Figure Carlos jong (links) -->
+        <circle cx="120" cy="120" r="36" fill="rgba(232,101,10,.08)"/>
+        <circle cx="120" cy="104" r="25" fill="none" stroke="#E8650A" stroke-width="2.5"/>
+        <text x="120" y="112" fill="#E8650A" font-size="13" font-family="DM Mono,monospace" text-anchor="middle">C</text>
+        <line x1="120" y1="129" x2="120" y2="195" stroke="#E8650A" stroke-width="2.5"/>
+        <line x1="120" y1="152" x2="88"  y2="176" stroke="#E8650A" stroke-width="2.5"/>
+        <line x1="120" y1="152" x2="152" y2="176" stroke="#E8650A" stroke-width="2.5"/>
+        <line x1="120" y1="195" x2="98"  y2="238" stroke="#E8650A" stroke-width="2.5"/>
+        <line x1="120" y1="195" x2="142" y2="238" stroke="#E8650A" stroke-width="2.5"/>
+        <text x="120" y="260" fill="#E8650A" font-size="12" font-family="DM Mono,monospace" text-anchor="middle" font-weight="500">Carlos</text>
+        <text x="120" y="275" fill="#B8B5B0" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">~18 jaar</text>
+        <!-- Bubble Carlos -->
+        <rect x="165" y="68" width="188" height="52" rx="6" fill="#E8650A"/>
+        <polygon points="165,94 144,100 165,108" fill="#E8650A"/>
+        <text x="259" y="91" fill="white" font-size="13" font-family="Source Serif 4,serif" text-anchor="middle" font-style="italic">"Pap, ik ben</text>
+        <text x="259" y="109" fill="white" font-size="13" font-family="Source Serif 4,serif" text-anchor="middle" font-style="italic" font-weight="700">uitgeleerd."</text>
+        <!-- Figure Vader (rechts) -->
+        <circle cx="620" cy="120" r="36" fill="rgba(122,158,59,.08)"/>
+        <circle cx="620" cy="104" r="25" fill="none" stroke="#7A9E3B" stroke-width="2.5"/>
+        <text x="620" y="112" fill="#7A9E3B" font-size="13" font-family="DM Mono,monospace" text-anchor="middle">V</text>
+        <line x1="620" y1="129" x2="620" y2="195" stroke="#7A9E3B" stroke-width="2.5"/>
+        <line x1="620" y1="152" x2="588" y2="176" stroke="#7A9E3B" stroke-width="2.5"/>
+        <line x1="620" y1="152" x2="652" y2="176" stroke="#7A9E3B" stroke-width="2.5"/>
+        <line x1="620" y1="195" x2="598" y2="238" stroke="#7A9E3B" stroke-width="2.5"/>
+        <line x1="620" y1="195" x2="642" y2="238" stroke="#7A9E3B" stroke-width="2.5"/>
+        <text x="620" y="260" fill="#7A9E3B" font-size="12" font-family="DM Mono,monospace" text-anchor="middle" font-weight="500">Carlos sr.</text>
+        <text x="620" y="275" fill="#B8B5B0" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">Orthopedagoog</text>
+        <!-- Bubble Vader -->
+        <rect x="402" y="130" width="216" height="80" rx="6" fill="#F0F6E8" stroke="#7A9E3B" stroke-width="1.5"/>
+        <polygon points="402,170 382,160 402,180" fill="#F0F6E8" stroke="#7A9E3B" stroke-width="1.5"/>
+        <text x="510" y="156" fill="#3A3A3A" font-size="11" font-family="Source Serif 4,serif" text-anchor="middle">"Als jij uitgeleerd was,</text>
+        <text x="510" y="173" fill="#3A3A3A" font-size="11" font-family="Source Serif 4,serif" text-anchor="middle" font-weight="700">dan was je mors dood.</text>
+        <text x="510" y="193" fill="#567028" font-size="11" font-family="Source Serif 4,serif" text-anchor="middle" font-style="italic">Ik zie een springlevende Carlos."</text>
+      </svg>
+      <div class="viz-cap">
+        <div class="viz-label">Sleutelmoment &mdash; Amsterdam, circa 1982</div>
+        <p>De jonge Carlos gooit nonchalant in de kamer dat hij uitgeleerd is. Zijn vader &mdash; orthopedagoog, scherp denker &mdash; barst in lachen uit. De zin die volgt, verdwijnt nooit meer: wie uitgeleerd is, is dood. Hier begint de architectuur van alles.</p>
+      </div>
+    </div>
+
+    <h2 class="par" id="h1-1">1.1 &nbsp; Een man bij wie niets verboden was</h2>
+    <p class="brood">Mijn vader heet ook Carlos. Hij was meer dan een vader &mdash; een gesprekspartner, een opponent, een vriend. Een man bij wie niets vreemd was, niets te gek, niets verboden. Hij was orthopedagoog en psycholoog, maar zijn grootste kwaliteit was iets anders: hij geloofde in mij zonder dat hij er iets voor terug wilde.</p>
+    <p class="brood">Hij zag iets wat de meeste mensen niet zagen. Hij weigerde dat weg te verklaren. Hij zei dat ik intelligent was. Dat ik verder dacht dan ik zelf doorhad. Dat mijn denken geen grens had, behalve de grens die ik er zelf op zette. Dat waren geen clichés. Dat was een diagnose.</p>
+
+    <h2 class="par" id="h1-2">1.2 &nbsp; Uitgeleerd bestaat niet</h2>
+    <p class="citaat">"Pap, ik ben uitgeleerd."</p>
+    <p class="brood">Hij keek me aan. Haalde zijn leesbril van zijn neus. Toen begon hij te lachen. Niet beleefd, niet inhoudend &mdash; hij rolde letterlijk van de ene kant van de kamer naar de andere. En toen, toen hij weer adem had:</p>
+    <p class="citaat">"Carlos, wat jij nu zegt kan helemaal niet. Als jij uitgeleerd was, dan was je mors en mors dood. Ik zie hier een springlevende Carlos staan."</p>
+    <p class="brood">Die woorden zijn nooit meer weggegaan. Niet omdat ze slim waren. Maar omdat ze onweerlegbaar waar waren. Je kunt niet uitgeleerd zijn. Je kunt alleen beslissen dat je stopt met leren. Dat is een keuze, geen grens.</p>
+
+    <h2 class="par" id="h1-3">1.3 &nbsp; Denken als sport</h2>
+    <p class="brood">Mijn vader nam bewust het tegenovergestelde standpunt in van wat hij verwachtte dat ik zou kiezen. Niet om mij te verwarren &mdash; maar om mij te trainen. Hij wilde dat ik van alle kanten kon denken: aanvallen, verdedigen, twijfelen, en toch blijven staan. Ik luisterde als kind al naar G.B.J. Hiltermann. Ik keek naar Den Haag Vandaag, Achter het Nieuws, Brandpunt &mdash; terwijl andere kinderen met zand speelden.</p>
+    <p class="brood">Hij zei: zorg dat je breder ontwikkeld bent dan wie dan ook. Dat is een voorsprong die niemand kan inhalen.</p>
+
+    <h2 class="par" id="h1-4">1.4 &nbsp; Wat hij mij werkelijk gaf</h2>
+    <p class="brood">Wat hij mij gaf was geen kennis. Het was architectuur. De basisconstructie van een hoofd dat zichzelf niet begrenst. Tot op de dag van vandaag kom ik weinig mensen tegen bij wie ik het inhoudelijk moet afleggen. Dat was mijn vader. Hij was de eerste plek waar ik Carlos kon zijn.</p>
+  </div>
+</section>
+
+<!-- H2 -->
+<section id="h2" class="grijs-bg">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 2</span>
+      School zei: jij bent fout
+    </h1>
+
+    <!-- VIZ 2: systeem-sorting -->
+    <div class="viz">
+      <svg viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="280" fill="white"/>
+        <text x="380" y="26" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="2">HOE HET SYSTEEM EEN KIND SORTEERT OP 9-JARIGE LEEFTIJD</text>
+        <!-- Kind invoer -->
+        <rect x="30" y="50" width="120" height="60" rx="4" fill="#F4F2EF" stroke="#E0DDD8" stroke-width="1.5"/>
+        <text x="90" y="78" fill="#3A3A3A" font-size="12" font-family="DM Mono,monospace" text-anchor="middle" font-weight="500">Kind</text>
+        <text x="90" y="96" fill="#B8B5B0" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">leeftijd 9</text>
+        <!-- Pijl in -->
+        <line x1="150" y1="80" x2="205" y2="80" stroke="#B8B5B0" stroke-width="2"/>
+        <polygon points="205,74 220,80 205,86" fill="#B8B5B0"/>
+        <!-- Filterbox -->
+        <rect x="220" y="42" width="160" height="76" rx="4" fill="#3A3A3A"/>
+        <text x="300" y="72" fill="white" font-size="12" font-family="DM Mono,monospace" text-anchor="middle" font-weight="500">Systeem-filter</text>
+        <text x="300" y="90" fill="rgba(255,255,255,.45)" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">Cijfers / Gedrag / Norm</text>
+        <text x="300" y="107" fill="rgba(255,255,255,.3)" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">Formulier / Advies leerkracht</text>
+        <!-- Pijl omhoog: voldoet -->
+        <line x1="300" y1="42" x2="300" y2="14" stroke="#7A9E3B" stroke-width="2"/>
+        <polygon points="294,16 300,4 306,16" fill="#7A9E3B"/>
+        <text x="300" y="0" fill="#567028" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Voldoet: mavo / havo / vwo</text>
+        <!-- Pijl omlaag: voldoet niet -->
+        <line x1="300" y1="118" x2="300" y2="158" stroke="#CC1A1A" stroke-width="2"/>
+        <polygon points="294,156 300,170 306,156" fill="#CC1A1A"/>
+        <!-- Rode box -->
+        <rect x="220" y="170" width="160" height="58" rx="4" fill="rgba(204,26,26,.06)" stroke="#CC1A1A" stroke-width="1.5" stroke-dasharray="5 3"/>
+        <text x="300" y="197" fill="#CC1A1A" font-size="13" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Lom-school</text>
+        <text x="300" y="215" fill="#6B6B6B" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">"Jij bent fout."</text>
+        <!-- Pijl rechts: wat mist systeem -->
+        <line x1="380" y1="80" x2="435" y2="80" stroke="#B8B5B0" stroke-width="2"/>
+        <polygon points="435,74 450,80 435,86" fill="#B8B5B0"/>
+        <!-- Oranje box: wat mist het systeem -->
+        <rect x="450" y="38" width="270" height="200" rx="4" fill="rgba(232,101,10,.05)" stroke="#E8650A" stroke-width="1.5"/>
+        <text x="585" y="64" fill="#3A3A3A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">WAT HET SYSTEEM NOOIT MEET:</text>
+        <text x="585" y="88"  fill="#6B6B6B" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Inzicht in mensen</text>
+        <text x="585" y="108" fill="#6B6B6B" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Patroonherkenning</text>
+        <text x="585" y="128" fill="#6B6B6B" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Analytisch vermogen</text>
+        <text x="585" y="148" fill="#6B6B6B" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Doorzettingsvermogen</text>
+        <text x="585" y="168" fill="#6B6B6B" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Lef en karakter</text>
+        <text x="585" y="188" fill="#E8650A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Moed om anders te zijn</text>
+        <text x="585" y="225" fill="#B8B5B0" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">Alles wat later het verschil maakt</text>
+      </svg>
+      <div class="viz-cap">
+        <div class="viz-label">Het sorteermoment &mdash; 9 jaar oud</div>
+        <p>Het systeem besluit op negenjarige leeftijd. Het filter meet wat meetbaar is. Wat het nooit meet &mdash; inzicht, lef, karakter, analytisch vermogen &mdash; is precies wat later het verschil maakt. Carlos valt door het filter. De rest van dit boek laat zien wat er toen verloren dreigde te gaan, en wat er desondanks bleef.</p>
+      </div>
+    </div>
+
+    <h2 class="par" id="h2-1">2.1 &nbsp; Het moment waarop zwijgen werd aangeleerd</h2>
+    <p class="brood">Ik heb nooit goed geweten hoe taal in elkaar zit. Niet de regels, niet de grammatica. En weet je wat het rare is? Ik heb nooit het gevoel gehad dat ik dom was. Nooit. Als taal een snelweg was, reden anderen keurig over de rijbaan. Ik vloog eroverheen. Niet omdat ik wilde racen &mdash; maar omdat ik niet wist dat je op de weg moest blijven.</p>
+    <p class="brood">School zei: jij bent fout. En dat is het moment waarop ik leerde zwijgen.</p>
+
+    <h2 class="par" id="h2-2">2.2 &nbsp; De lom-school en wat ze vergaten te vertellen</h2>
+    <p class="brood">Ik was negen jaar oud. Ik had nog niets bewezen &mdash; maar het systeem had al besloten wat ik waard was. Wat ze vergaten te vertellen: een stempel is geen diagnose. Het uitsorteren van kinderen op negenjarige leeftijd zegt iets over het systeem, niet over het kind.</p>
+
+    <h2 class="par" id="h2-3">2.3 &nbsp; Wat ik in de plaats kreeg</h2>
+    <p class="brood">Levenservaring. Karakter. Doorzettingsvermogen. Het talent om door onzin heen te kijken. Dat is waarom ik dit boek kan schrijven. Niet ondanks mijn achtergrond &mdash; maar dankzij mijn achtergrond.</p>
+
+    <h2 class="par" id="h2-4">2.4 &nbsp; Wat het systeem niet snapt aan afwijking</h2>
+    <p class="brood">Afwijking is geen fout. Afwijking is informatie. Mijn vader vormde. De school corrigeerde. Dat verschil heeft mijn leven bepaald.</p>
+
+    <div class="pullquote">
+      <p>"Mijn vader vormde. De school corrigeerde. Dat verschil heeft mijn leven bepaald."</p>
+      <span class="bron">Hoofdstuk 2 &mdash; School zei: jij bent fout</span>
+    </div>
+  </div>
+</section>
+
+<!-- H3 -->
+<section id="h3">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 3</span>
+      Wendy
+    </h1>
+
+    <!-- VIZ 3: 35 jaar tijdlijn -->
+    <div class="viz">
+      <svg viewBox="0 0 760 210" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="210" fill="white"/>
+        <text x="380" y="22" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="2">35 JAAR &mdash; EEN VRIENDSCHAP DIE GROTER WAS DAN TAAL</text>
+        <defs>
+          <linearGradient id="tl-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   style="stop-color:#E8650A"/>
+            <stop offset="70%"  style="stop-color:#7A9E3B"/>
+            <stop offset="100%" style="stop-color:#3A3A3A"/>
+          </linearGradient>
+        </defs>
+        <!-- Basislijn -->
+        <line x1="50" y1="105" x2="710" y2="105" stroke="#E0DDD8" stroke-width="3" stroke-linecap="round"/>
+        <!-- Gekleurde lijn -->
+        <line x1="50" y1="105" x2="620" y2="105" stroke="url(#tl-grad)" stroke-width="4" stroke-linecap="round"/>
+        <!-- Markers -->
+        <circle cx="50"  cy="105" r="7" fill="#E8650A"/>
+        <text x="50"  y="128" fill="#E8650A" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Start</text>
+        <circle cx="190" cy="105" r="5" fill="#E8650A" opacity=".6"/>
+        <text x="190" y="84"  fill="#6B6B6B" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">Wendy schrijft zijn teksten</text>
+        <circle cx="380" cy="105" r="5" fill="#7A9E3B" opacity=".7"/>
+        <text x="380" y="128" fill="#6B6B6B" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">Honderd opdrachten</text>
+        <circle cx="560" cy="105" r="5" fill="#7A9E3B" opacity=".6"/>
+        <text x="560" y="84"  fill="#6B6B6B" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">"Schrijf het zelf"</text>
+        <!-- Eindpunt: overlijden -->
+        <circle cx="620" cy="105" r="10" fill="rgba(204,26,26,.1)" stroke="#CC1A1A" stroke-width="2"/>
+        <line x1="615" y1="100" x2="625" y2="110" stroke="#CC1A1A" stroke-width="2"/>
+        <line x1="625" y1="100" x2="615" y2="110" stroke="#CC1A1A" stroke-width="2"/>
+        <text x="620" y="128" fill="#CC1A1A" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Afscheid</text>
+        <!-- Lijn naar boek -->
+        <line x1="620" y1="105" x2="700" y2="105" stroke="#3A3A3A" stroke-width="2" stroke-dasharray="5 3"/>
+        <circle cx="710" cy="105" r="7" fill="#3A3A3A"/>
+        <text x="710" y="128" fill="#3A3A3A" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Dit boek</text>
+        <!-- grote tekst -->
+        <text x="330" y="175" fill="#3A3A3A" font-size="42" font-family="Playfair Display,serif" font-weight="900" font-style="italic" opacity=".04" text-anchor="middle">35 jaar</text>
+      </svg>
+      <div class="viz-cap">
+        <div class="viz-label">35 jaar vriendschap</div>
+        <p>Vijfendertig jaar deelden Carlos en Wendy alles. Wendy schreef zijn teksten toen hij zijn eigen stem nog niet durfde te gebruiken. Op haar sterfbed zei ze het onvergetelijke: "Deze keer ga ik jouw tekst niet voor je schrijven." Dit boek is het antwoord op die woorden.</p>
+      </div>
+    </div>
+
+    <h2 class="par" id="h3-1">3.1 &nbsp; Vijfendertig jaar</h2>
+    <p class="brood">Wendy was mijn beste vriendin. Vijfendertig jaar lang deelden wij alles. Vriendschap, liefde, scherpte, humor, stilte. De grote dingen en de kleine. Vijfendertig jaar is geen vriendschap meer. Het is architectuur. Het is een deel van jezelf dat buiten je lichaam leeft.</p>
+
+    <h2 class="par" id="h3-2">3.2 &nbsp; De stem die mijn stem droeg</h2>
+    <p class="brood">Ze was ook degene die jarenlang mijn woorden droeg. Mijn teksten schreef wanneer ik dat niet kon. Mijn stem op papier zette, in een tijd dat ik die stem nog niet durfde te gebruiken. Ze deed het omdat ze in mij geloofde op een manier die ik zelf nog niet kon.</p>
+
+    <h2 class="par" id="h3-3">3.3 &nbsp; Hoe ze het deed</h2>
+    <p class="brood">Ze schreef niet wat ik bedoelde. Ze schreef wat ik voelde maar nog niet kon zeggen. Iemand die opschrijft wat je bedoelt, is een secretaresse. Iemand die opschrijft wat je voelt maar niet kunt zeggen &mdash; dat is iemand die je werkelijk kent. Ze kende mij volledig.</p>
+
+    <h2 class="par" id="h3-4">3.4 &nbsp; Het allerlaatste wat ze zei</h2>
+    <p class="citaat groen">"Carlos, deze keer ga ik jouw tekst niet voor je schrijven."</p>
+    <p class="brood">En we moesten zo hard lachen dat we bijna geen lucht meer hadden. Ze stierf zoals ze leefde: met humor als wapen en liefde als fundament.</p>
+
+    <h2 class="par" id="h3-5">3.5 &nbsp; Wat haar afwezigheid mij leerde</h2>
+    <p class="brood">Je kunt niet wachten. De stem die je steeds hebt uitgesteld, is de stem die het meest nodig is. Nu. Niet later. Dit boek is voor een groot deel ook van haar.</p>
+  </div>
+</section>
+
+<!-- ========================================================
+     DEEL II
+     ======================================================== -->
+<div class="deel-header">
+  <div class="deel-header-glow"></div>
+  <div class="deel-header-lijn"></div>
+  <p class="deel-nr">Deel II</p>
+  <h2>De paradox van de<br>gevraagde buitenstaander</h2>
+  <p class="ondertitel">Honderd keer gevraagd. Nul keer aangenomen.</p>
+</div>
+
+<!-- H4 -->
+<section id="h4">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 4</span>
+      Honderd opdrachtgevers, nul aanstellingen
+    </h1>
+
+    <!-- VIZ 4: paradox -->
+    <div class="viz">
+      <svg viewBox="0 0 760 240" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="240" fill="white"/>
+        <text x="380" y="22" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="2">DE CENTRALE PARADOX VAN DIT BOEK</text>
+        <!-- Links: inhuren -->
+        <rect x="30" y="40" width="290" height="160" rx="4" fill="#E8650A"/>
+        <text x="175" y="84" fill="white" font-size="13" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600" letter-spacing="1">INHUREN</text>
+        <text x="175" y="106" fill="rgba(255,255,255,.7)" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Altijd ja</text>
+        <text x="175" y="124" fill="rgba(255,255,255,.55)" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Crisis / Advies / Selectie</text>
+        <text x="175" y="142" fill="rgba(255,255,255,.55)" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Leiderschap / Richting</text>
+        <text x="175" y="165" fill="rgba(255,255,255,.35)" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">Randstad &mdash; KPMG &mdash; Ahold</text>
+        <text x="175" y="181" fill="rgba(255,255,255,.35)" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">Amsterdam &mdash; Rotterdam &mdash; ...</text>
+        <!-- Niet-gelijk -->
+        <text x="380" y="130" fill="#CC1A1A" font-size="44" font-family="DM Mono,monospace" text-anchor="middle" font-weight="300">&#8800;</text>
+        <text x="380" y="158" fill="#B8B5B0" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">de ironie</text>
+        <!-- Rechts: aannemen -->
+        <rect x="440" y="40" width="290" height="160" rx="4" fill="#F4F2EF" stroke="#E0DDD8" stroke-width="2" stroke-dasharray="8 4"/>
+        <text x="585" y="84" fill="#6B6B6B" font-size="13" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600" letter-spacing="1">AANNEMEN</text>
+        <text x="585" y="106" fill="#CC1A1A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Nooit</text>
+        <text x="585" y="124" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Geen diploma</text>
+        <text x="585" y="142" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Niet aantoonbaar</text>
+        <text x="585" y="160" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Niet in het systeem passend</text>
+        <!-- Onderlabel -->
+        <text x="380" y="216" fill="#3A3A3A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Het systeem dat hem buitensloot, had hem nodig om te overleven</text>
+      </svg>
+      <div class="viz-cap">
+        <div class="viz-label">De paradox in beeld</div>
+        <p>Links: wat hij altijd kreeg &mdash; inhuurverzoeken van de grootste organisaties in Nederland. Rechts: wat hij nooit kreeg &mdash; een aanstelling, een vaste plek, erkenning. Hetzelfde systeem. Twee radicaal verschillende antwoorden. Dat is de kern van dit boek.</p>
+      </div>
+    </div>
+
+    <h2 class="par" id="h4-1">4.1 &nbsp; Een carri&egrave;re die niet mocht bestaan</h2>
+    <p class="brood">Honderd opdrachtgevers. Van multinationals tot ministeries. Van gemeentebesturen tot directiekamers. Iedereen vroeg mij om raad, inzicht, analyse, begeleiding, selectie, leiderschap, richting. Een carri&egrave;re die op papier niet bestaat &mdash; en toch heeft plaatsgevonden.</p>
+
+    <h2 class="par" id="h4-2">4.2 &nbsp; Randstad, KPMG, Amsterdam &mdash; en toch nee</h2>
+    <p class="brood">Ze betaalden mij om te doen wat ze zelf niet konden. En dezelfde organisaties zouden mij nooit hebben aangenomen als medewerker. Omdat ik geen diploma heb. Ze handelden rationeel binnen het systeem dat ze kenden. Maar het systeem bepaalt wat rationeel is. En het systeem heeft blinde vlekken.</p>
+
+    <h2 class="par" id="h4-3">4.3 &nbsp; De vraag die ik het meest vreesde</h2>
+    <p class="citaat">"Carlos, welke studie heb jij gedaan?"</p>
+    <p class="brood">Dan voelde ik het al. In mijn borst, mijn maag, mijn keel.</p>
+    <p class="citaat">"Carlos, jij hebt zeker in Leiden gezeten. In welk jaar zat je bij Minerva?"</p>
+
+    <h2 class="par" id="h4-4">4.4 &nbsp; Wat er dan gebeurde</h2>
+    <p class="brood">Ik zei de waarheid. Ik heb niet gestudeerd. Geen hbo, geen universiteit, geen certificaten. Niets. Men lachte. Omdat men dacht dat ik een grap maakte.</p>
+    <p class="citaat">"Nu serieus. Je bent te intelligent om niks gedaan te hebben."</p>
+    <p class="brood">En precies daar ging ik van binnen dood. Elke keer opnieuw.</p>
+
+    <h2 class="par" id="h4-5">4.5 &nbsp; De wond die maar niet heelt</h2>
+    <p class="brood">De wond van het dubbele oordeel: goed genoeg om in te huren, niet goed genoeg om aan te nemen. Dat is geen inconsistentie. Dat is een structuur. En structuren laten littekens.</p>
+  </div>
+</section>
+
+<!-- H5 -->
+<section id="h5" class="grijs-bg">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 5</span>
+      Drie momenten die alles zeggen
+    </h1>
+
+    <div class="tbl-wrap">
+      <table class="luxe">
+        <thead>
+          <tr>
+            <th>Situatie</th>
+            <th>Wat het systeem deed</th>
+            <th>Wat Carlos deed</th>
+            <th>Uitkomst</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Directeur financi&euml;le sector &mdash; strategische rol</td>
+            <td>Persoonlijke uitnodiging, gevolgd door afwijzing op diploma-eis</td>
+            <td>Solliciteerde formeel voor het eerst in jaren</td>
+            <td><span class="badge badge-rood">Afgewezen</span><br><span style="font-size:.78rem;color:#6B6B6B;display:block;margin-top:5px;">Drie weken later: ingehuurd als adviseur</span></td>
+          </tr>
+          <tr>
+            <td>Gemeentelijk team &mdash; anderhalf jaar vastgelopen</td>
+            <td>Drie managers, twee externe bureaus, geen resultaat</td>
+            <td>Twee dagdelen observeren &mdash; kern van het probleem blootgelegd</td>
+            <td><span class="badge badge-groen">Opgelost in drie maanden</span></td>
+          </tr>
+          <tr>
+            <td>Hoofd P&O &mdash; grote uitvoeringsorganisatie</td>
+            <td>Diploma vereist, Carlos uitgesloten, kandidaat aangesteld, kandidaat ontslagen</td>
+            <td>Trok zich terug uit procedure. Zes maanden later: crisistelefoontje</td>
+            <td><span class="badge badge-oranje">Crisis opgelost</span><br><span style="font-size:.78rem;color:#6B6B6B;display:block;margin-top:5px;">Aangenomen: nog steeds nee</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="par" id="h5-1">5.1 &nbsp; De directeur die mij uitnodigde en afwees</h2>
+    <p class="brood">Een grote organisatie, financi&euml;le sector. Een directeur die mij persoonlijk vroeg te solliciteren op een strategische rol. Ik deed het &mdash; voor het eerst in jaren stelde ik me formeel beschikbaar. De afwijzing was zakelijk. Het inhuurverzoek drie weken later ook. We hebben er nooit meer over gesproken.</p>
+
+    <h2 class="par" id="h5-2">5.2 &nbsp; Het team dat vastliep</h2>
+    <p class="brood">Een gemeentelijke organisatie. Een team van twaalf mensen dat al anderhalf jaar niet functioneerde. Drie managers hadden het geprobeerd. Twee externe bureaus hadden rapporten geschreven. Niemand had het opgelost. Na twee dagdelen wist ik wat er aan de hand was: &eacute;&eacute;n persoon hield het team actief klein omdat zijn eigen positie groter leek in een team dat niet presteerde. Dat staat in geen enkel rapport. Geen assessment meet het. Het team herkende het direct. Drie maanden later functioneerde het.</p>
+
+    <h2 class="par" id="h5-3">5.3 &nbsp; De procedure die mij buitensloot en daarna vroeg</h2>
+    <p class="brood">Zes maanden na de afwijzing werd de aangestelde kandidaat ontslagen. Ze belden mij &mdash; niet voor de vaste rol, maar voor de crisis. Ik loste de problemen op. En daarna ben ik weggegaan. Want aannemen deden ze mij nog steeds niet.</p>
+  </div>
+</section>
+
+<!-- H6 -->
+<section id="h6">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 6</span>
+      Het systeem meet, maar begrijpt niet
+    </h1>
+
+    <!-- VIZ 5: meten vs begrijpen -->
+    <div class="viz">
+      <svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="260" fill="white"/>
+        <text x="380" y="22" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="2">METEN VERSUS BEGRIJPEN &mdash; TWEE WERELDEN, EEN BESLISSING</text>
+        <!-- Links: meten -->
+        <rect x="30" y="38" width="300" height="196" rx="4" fill="#F4F2EF" stroke="#E0DDD8" stroke-width="1"/>
+        <text x="180" y="70" fill="#6B6B6B" font-size="12" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600" letter-spacing="1">WAT HET SYSTEEM MEET</text>
+        <rect x="52" y="84" width="256" height="28" rx="3" fill="#E0DDD8"/>
+        <text x="180" y="103" fill="#6B6B6B" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Meetlat: diploma / cijfer / certificaat</text>
+        <text x="72"  y="136" fill="#3A3A3A" font-size="12" font-family="DM Mono,monospace">Diploma</text>
+        <text x="72"  y="156" fill="#3A3A3A" font-size="12" font-family="DM Mono,monospace">Cijfers en scores</text>
+        <text x="72"  y="176" fill="#3A3A3A" font-size="12" font-family="DM Mono,monospace">Certificaten</text>
+        <text x="72"  y="196" fill="#3A3A3A" font-size="12" font-family="DM Mono,monospace">Werkgeversnaam</text>
+        <text x="72"  y="216" fill="#B8B5B0" font-size="10" font-family="DM Mono,monospace">Aantoonbaar / Herhaalbaar / Ordelijk</text>
+        <!-- Niet-gelijk -->
+        <text x="380" y="146" fill="#CC1A1A" font-size="40" font-family="DM Mono,monospace" text-anchor="middle" font-weight="300">&#8800;</text>
+        <!-- Rechts: begrijpen -->
+        <rect x="430" y="38" width="300" height="196" rx="4" fill="#E8650A"/>
+        <text x="580" y="70" fill="rgba(255,255,255,.7)" font-size="12" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600" letter-spacing="1">WAT TALENT IS</text>
+        <text x="452" y="100" fill="white" font-size="12" font-family="DM Mono,monospace">Patroonherkenning</text>
+        <text x="452" y="122" fill="white" font-size="12" font-family="DM Mono,monospace">Inzicht in mensen</text>
+        <text x="452" y="144" fill="white" font-size="12" font-family="DM Mono,monospace">Snelheid van begrip</text>
+        <text x="452" y="166" fill="white" font-size="12" font-family="DM Mono,monospace">Probleemoplossing</text>
+        <text x="452" y="188" fill="white" font-size="12" font-family="DM Mono,monospace">Lef en karakter</text>
+        <text x="452" y="210" fill="rgba(255,255,255,.5)" font-size="10" font-family="DM Mono,monospace">Niet meetbaar / Niet aantoonbaar / Onmisbaar</text>
+        <!-- Onderlabel -->
+        <text x="380" y="250" fill="#6B6B6B" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">Het systeem meet wat ordelijk is &mdash; en mist daarmee precies wat onmisbaar is</text>
+      </svg>
+      <div class="viz-cap">
+        <div class="viz-label">De fundamentele kloof</div>
+        <p>Links: wat het selectiesysteem meet. Rechts: wat talent werkelijk is. De kloof tussen die twee kolommen is het onderwerp van dit boek. Het systeem is niet slecht &mdash; het is ontworpen voor iets anders dan het beweert te doen.</p>
+      </div>
+    </div>
+
+    <h2 class="par" id="h6-1">6.1 &nbsp; Gereedschap dat niet voor talent gemaakt is</h2>
+    <p class="brood">In het onderwijs, bij de overheid en in HR wordt al decennia gewerkt met instrumenten die nooit ontworpen zijn om menselijk potentieel zichtbaar te maken. Ze zijn ontworpen voor orde, overzicht en administratie. Talent verdwijnt juist wanneer je het probeert te vangen in formats die te klein zijn voor de werkelijkheid van mensen.</p>
+
+    <h2 class="par" id="h6-2">6.2 &nbsp; Wat selectie werkelijk doet</h2>
+    <p class="brood">Selectieprocedures meten het vermogen om selectieprocedures te doorlopen &mdash; niet de waarde die iemand toevoegt. Een organisatie die alleen mensen aanneemt die het systeem hebben gevolgd, bouwt een echokamer. En dan bellen ze mij.</p>
+
+    <h2 class="par" id="h6-3">6.3 &nbsp; De eerlijke kant van het systeem</h2>
+    <p class="brood">Selectie op diploma reduceert willekeur. Het maakt processen herhaalbaar en toetsbaar. Dat zijn legitieme doelen. Maar systemen die willekeur reduceren, produceren andere willekeur: ze sluiten systematisch buiten.</p>
+
+    <h2 class="par" id="h6-4">6.4 &nbsp; Waar het wel klopt &mdash; en waarom het toch faalt</h2>
+    <p class="brood">Een diploma bewijst dat iemand een opleiding heeft afgerond. Het bewijst niet wat diegene kan. Die verwisseling &mdash; zekerheid verwarren met bewijs &mdash; kost talent. Elke dag.</p>
+
+    <div class="pullquote">
+      <p>"Een diploma bewijst dat iemand een opleiding heeft afgerond.<br>Het bewijst niet wat diegene kan."</p>
+      <span class="bron">Hoofdstuk 6 &mdash; Het systeem meet, maar begrijpt niet</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     DEEL III
+     ======================================================== -->
+<div class="deel-header">
+  <div class="deel-header-glow"></div>
+  <div class="deel-header-lijn"></div>
+  <p class="deel-nr">Deel III</p>
+  <h2>Wat talent werkelijk is</h2>
+  <p class="ondertitel">Inzicht als levende praktijk &mdash; niet als abstractie</p>
+</div>
+
+<!-- H7 -->
+<section id="h7">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 7</span>
+      De anatomie van inzicht
+    </h1>
+
+    <!-- VIZ 6: kamer-observatie -->
+    <div class="viz">
+      <svg viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="310" fill="white"/>
+        <text x="380" y="22" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="2">WAT CARLOS ZIET VOORDAT IEMAND IETS HEEFT GEZEGD</text>
+        <!-- Vergaderzaal -->
+        <rect x="140" y="38" width="580" height="232" rx="4" fill="#FAFAF8" stroke="#E0DDD8" stroke-width="1.5"/>
+        <text x="430" y="55" fill="#E0DDD8" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="1">VERGADERZAAL</text>
+        <!-- Tafel -->
+        <rect x="220" y="110" width="400" height="16" rx="3" fill="#D8D5D0"/>
+        <!-- Stoelen boven tafel -->
+        <rect x="232" y="78"  width="44" height="32" rx="3" fill="#E8E5E0"/>
+        <rect x="292" y="78"  width="44" height="32" rx="3" fill="#E8E5E0"/>
+        <rect x="352" y="78"  width="44" height="32" rx="3" fill="#E8E5E0"/>
+        <rect x="412" y="78"  width="44" height="32" rx="3" fill="#E8E5E0"/>
+        <rect x="472" y="78"  width="44" height="32" rx="3" fill="#E8E5E0"/>
+        <!-- Stoel met macht (oranje) -->
+        <rect x="532" y="78"  width="44" height="32" rx="3" fill="#E8650A"/>
+        <text x="554" y="100" fill="white" font-size="8" font-family="DM Mono,monospace" text-anchor="middle">macht</text>
+        <!-- Stoelen onder tafel -->
+        <rect x="232" y="126" width="44" height="32" rx="3" fill="#E8E5E0"/>
+        <rect x="292" y="126" width="44" height="32" rx="3" fill="#E8E5E0"/>
+        <rect x="352" y="126" width="44" height="32" rx="3" fill="#E8E5E0"/>
+        <!-- Gespannen stoel (rood rand) -->
+        <rect x="412" y="126" width="44" height="32" rx="3" fill="rgba(204,26,26,.08)" stroke="#CC1A1A" stroke-width="1.5"/>
+        <text x="434" y="148" fill="#CC1A1A" font-size="7" font-family="DM Mono,monospace" text-anchor="middle">gespannen</text>
+        <rect x="472" y="126" width="44" height="32" rx="3" fill="#E8E5E0"/>
+        <!-- Buitenstaander (gestippeld) -->
+        <rect x="532" y="126" width="44" height="32" rx="3" fill="#F4F2EF" stroke="#B8B5B0" stroke-width="1" stroke-dasharray="4 2"/>
+        <text x="554" y="148" fill="#B8B5B0" font-size="7" font-family="DM Mono,monospace" text-anchor="middle">buiten</text>
+        <!-- Carlos observeert links -->
+        <circle cx="72" cy="150" r="30" fill="rgba(232,101,10,.08)"/>
+        <circle cx="72" cy="136" r="20" fill="none" stroke="#E8650A" stroke-width="2.5"/>
+        <line x1="72" y1="156" x2="72" y2="205" stroke="#E8650A" stroke-width="2.5"/>
+        <line x1="72" y1="172" x2="50" y2="190" stroke="#E8650A" stroke-width="2.5"/>
+        <line x1="72" y1="172" x2="94" y2="190" stroke="#E8650A" stroke-width="2.5"/>
+        <text x="72" y="225" fill="#E8650A" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Carlos</text>
+        <text x="72" y="240" fill="#B8B5B0" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">observeert</text>
+        <!-- Gezichtslijnen -->
+        <line x1="90" y1="132" x2="548" y2="88"  stroke="#E8650A" stroke-width=".8" stroke-dasharray="5 4" opacity=".5"/>
+        <line x1="90" y1="136" x2="430" y2="138" stroke="#CC1A1A" stroke-width=".8" stroke-dasharray="5 4" opacity=".4"/>
+        <line x1="90" y1="140" x2="548" y2="138" stroke="#B8B5B0" stroke-width=".8" stroke-dasharray="5 4" opacity=".3"/>
+        <!-- Labels -->
+        <rect x="510" y="56" width="90" height="18" rx="3" fill="rgba(232,101,10,.1)" stroke="#E8650A" stroke-width="1"/>
+        <text x="555" y="69" fill="#E8650A" font-size="8" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">informele macht</text>
+        <rect x="390" y="164" width="90" height="18" rx="3" fill="rgba(204,26,26,.07)" stroke="#CC1A1A" stroke-width="1"/>
+        <text x="435" y="177" fill="#CC1A1A" font-size="8" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">sociale spanning</text>
+        <rect x="510" y="164" width="90" height="18" rx="3" fill="#F4F2EF" stroke="#B8B5B0" stroke-width="1" stroke-dasharray="3 2"/>
+        <text x="555" y="177" fill="#B8B5B0" font-size="8" font-family="DM Mono,monospace" text-anchor="middle">buitenstaander</text>
+        <!-- Carlos leest dit alles -->
+        <text x="430" y="288" fill="#6B6B6B" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">Carlos leest dit alles voordat de vergadering begint</text>
+      </svg>
+      <div class="viz-cap">
+        <div class="viz-label">De kamer &mdash; wat anderen niet zien</div>
+        <p>Oranje: de persoon met de informele macht, niet de hoogste functietitel maar degene die ogen trekt. Rood: de gespannen aanwezige. Gestippeld: de persoon die net naast de groep valt. Carlos leest dit in seconden, voordat iemand iets heeft gezegd. Dit is geen magie. Het is jarenlang buiten het systeem staan.</p>
+      </div>
+    </div>
+
+    <h2 class="par" id="h7-1">7.1 &nbsp; Wat ik zie als ik een kamer binnenloop</h2>
+    <p class="brood">Voordat iemand iets heeft gezegd, zie ik al iets. Ik zie wie de echte macht heeft &mdash; niet de formele, maar de informele. De persoon die de ogen van anderen trekt als er een vraag wordt gesteld. Ik zie wie er gespannen is en waarom. Wie erbij hoort en wie er net naast zit. Dit is geen magie. Het is observatie die zo snel gaat dat het aanvoelt als intuïtie.</p>
+
+    <h2 class="par" id="h7-2">7.2 &nbsp; Patronen lezen die anderen niet zien</h2>
+    <p class="brood">Een team dat al twee jaar samenwerkt heeft een geschiedenis die niet in documenten zit. Ze zit in de manier waarop mensen naar elkaar kijken als een bepaald onderwerp ter sprake komt. In de stilte die valt als iemand binnenkomt. Ik werd ingehuurd om te zeggen wat mensen niet willen weten maar nodig hebben te horen.</p>
+
+    <h2 class="par" id="h7-3">7.3 &nbsp; Hoe het voelt om altijd de enige te zijn die het ziet</h2>
+    <p class="brood">Het is eenzaam. Als je dingen ziet die anderen niet zien, ben je in elke kamer een beetje alleen. Totdat ik leerde dat zwijgen mij kleiner maakte dan ik was.</p>
+
+    <h2 class="par" id="h7-4">7.4 &nbsp; Waarom dit niet aanleerbaar is</h2>
+    <p class="brood">Wat ik beschrijf is geen vaardigheid. Het is een manier van zijn &mdash; het resultaat van jaren buiten het systeem staan. De paradox: het systeem selecteert op bewijzen van systeemconformiteit. Maar de meest waardevolle mensen zijn vaak degenen die er nooit volledig deel van uitmaakten.</p>
+
+    <div class="pullquote">
+      <p>"Het systeem selecteert op conformiteit. Maar de meest waardevolle mensen zijn degenen die er nooit volledig deel van uitmaakten."</p>
+      <span class="bron">Hoofdstuk 7 &mdash; De anatomie van inzicht</span>
+    </div>
+  </div>
+</section>
+
+<!-- H8 -->
+<section id="h8" class="grijs-bg">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 8</span>
+      De prijs van het buitenstaanderschap
+    </h1>
+    <h2 class="par" id="h8-1">8.1 &nbsp; Wat het kost</h2>
+    <p class="brood">Je mag komen als er brand is. Je mag vertrekken als de brand geblust is. En dan staat er iemand anders op het podium &mdash; iemand met een diploma, met een titel, met een vaste aanstelling. Dat was mijn werkend leven, decennialang. Het went. Maar het stopt nooit met prikken.</p>
+    <h2 class="par" id="h8-2">8.2 &nbsp; Identiteit zonder erkenning</h2>
+    <p class="brood">Alleen het werk. Alleen de resultaten. Alleen de telefoontjes van mensen die mij nodig hadden. Op goede dagen was dat genoeg. Op slechte dagen was het niets waard. Ik heb geleerd dat identiteit niet van buitenaf komt. Maar ik zou liegen als ik zei dat het makkelijk was om dat te leren.</p>
+    <h2 class="par" id="h8-3">8.3 &nbsp; Wat ik heb moeten loslaten</h2>
+    <p class="brood">Het verlangen om erbij te horen. Het naamplaatje op de deur. De vaste plek aan de tafel. Op de dag dat ik dat werkelijk accepteerde, veranderde er iets. Stiller. Lichter.</p>
+    <h2 class="par" id="h8-4">8.4 &nbsp; Wat ik nooit heb losgelaten</h2>
+    <p class="brood">Mijn standaard. De weigering om minder te leveren dan ik kan, ook als niemand het zou opmerken. Mijn vader heeft dat kompas ge&iuml;nstalleerd. Wendy heeft het bijgehouden. Dat kompas is dit boek.</p>
+  </div>
+</section>
+
+<!-- H9 -->
+<section id="h9">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 9</span>
+      Het scharnierpunt
+    </h1>
+
+    <!-- VIZ 7: tijdlijn scharnierpunt -->
+    <div class="viz">
+      <svg viewBox="0 0 760 195" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="195" fill="white"/>
+        <text x="380" y="22" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="2">VAN STEMPEL TOT STEM &mdash; DE TIJDLIJN</text>
+        <defs>
+          <linearGradient id="tl3" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%"   style="stop-color:#E0DDD8"/>
+            <stop offset="55%"  style="stop-color:#E8650A"/>
+            <stop offset="100%" style="stop-color:#0D0D0D"/>
+          </linearGradient>
+        </defs>
+        <line x1="40" y1="100" x2="720" y2="100" stroke="url(#tl3)" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="80"  cy="100" r="5" fill="#B8B5B0"/>
+        <text x="80"  y="122" fill="#B8B5B0" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Lom-school</text>
+        <circle cx="200" cy="100" r="5" fill="#B8B5B0"/>
+        <text x="200" y="82"  fill="#B8B5B0" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Eerste opdracht</text>
+        <circle cx="320" cy="100" r="5" fill="#6B6B6B"/>
+        <text x="320" y="122" fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">100 klanten</text>
+        <circle cx="440" cy="100" r="5" fill="#E8650A" opacity=".6"/>
+        <text x="440" y="82"  fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">Vacature &mdash; laptop dicht</text>
+        <!-- Scharnierpunt -->
+        <circle cx="530" cy="100" r="18" fill="#E8650A"/>
+        <text x="530" y="105" fill="white" font-size="14" font-family="DM Mono,monospace" text-anchor="middle" font-weight="700">!</text>
+        <text x="530" y="130" fill="#E8650A" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Scharnierpunt</text>
+        <text x="530" y="143" fill="#6B6B6B" font-size="8" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">"Als ik nu niets zeg, zeg ik het nooit"</text>
+        <line x1="530" y1="82" x2="530" y2="48" stroke="#E8650A" stroke-width="1.5"/>
+        <polygon points="524,50 530,36 536,50" fill="#E8650A"/>
+        <text x="530" y="28" fill="#E8650A" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">Besluit om te beginnen</text>
+        <!-- Toekomst -->
+        <circle cx="640" cy="100" r="8" fill="#0D0D0D"/>
+        <text x="640" y="122" fill="#0D0D0D" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Dit boek</text>
+        <circle cx="710" cy="100" r="5" fill="#0D0D0D" opacity=".3"/>
+        <text x="710" y="82"  fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">Wat volgt</text>
+      </svg>
+      <div class="viz-cap">
+        <div class="viz-label">De tijdlijn</div>
+        <p>Links: de stille jaren. Lom-school, eerste opdracht, honderd klanten &mdash; allemaal zonder officiele erkenning. Het scharnierpunt in oranje: de dag dat de laptop dichtgaat en het besluit valt om te beginnen. Rechts: dit boek, en wat daarna komt.</p>
+      </div>
+    </div>
+
+    <h2 class="par" id="h9-1">9.1 &nbsp; De dag dat genoeg genoeg was</h2>
+    <p class="brood">Ik opende mijn laptop en zag een vacature &mdash; dezelfde functie die ik de afgelopen twee jaar feitelijk al had uitgeoefend, maar dan als externe. Ik las de functie-eisen. Hbo- of wo-diploma vereist. Ik sloot de laptop. Niet boos. Niet verdrietig. Gewoon moe. En in die stilte: als ik nu niets zeg, dan zeg ik het nooit.</p>
+    <h2 class="par" id="h9-2">9.2 &nbsp; Wat er veranderde</h2>
+    <p class="brood">Ik heb geen speech gehouden. Ik heb besloten te beginnen. Met opschrijven wat ik al die jaren had gezien. Met de stem gebruiken die ik decennialang had ingehouden.</p>
+    <h2 class="par" id="h9-3">9.3 &nbsp; Waarom nu</h2>
+    <p class="brood">Omdat ik het eerder niet kon. Je hebt een bepaalde leeftijd nodig, een bepaalde hoeveelheid bewijs, een bepaalde zekerheid over wie je bent. Dat is het diploma dat ik heb. Het zit niet op papier. Het zit in alles wat ik heb gedaan.</p>
+  </div>
+</section>
+
+<!-- ========================================================
+     DEEL IV
+     ======================================================== -->
+<div class="deel-header">
+  <div class="deel-header-glow"></div>
+  <div class="deel-header-lijn"></div>
+  <p class="deel-nr">Deel IV</p>
+  <h2>De stem die te lang<br>werd ingehouden</h2>
+  <p class="ondertitel">Eindelijk. Volledig. Zonder apologie.</p>
+</div>
+
+<!-- H10 -->
+<section id="h10">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 10</span>
+      Waarom ik nu pas spreek
+    </h1>
+    <h2 class="par" id="h10-1">10.1 &nbsp; Zwijgen als verdwijnen</h2>
+    <p class="brood">Er zijn mensen die zwijgen uit bescheidenheid. Ik zweeg uit overleving. Op een dag begrijp je dat dit geen oplossing is. Zwijgen beschermt je niet. Het maakt je kleiner. Het laat het systeem winnen zonder dat het ooit zijn werk hoeft te bewijzen.</p>
+    <h2 class="par" id="h10-2">10.2 &nbsp; De mensen die zeiden: doe het</h2>
+    <p class="brood">Ellen. Nikai. Camiel. Astrid. Harlow. Sandra. Clara. Vicky. Gera. En mijn vader. En Wendy &mdash; die er niet meer is om dit te lezen, maar die in elke zin aanwezig is.</p>
+    <h2 class="par" id="h10-3">10.3 &nbsp; De stem die ik altijd al had</h2>
+    <p class="brood">Ik had nooit een diploma nodig gehad om te weten wie ik was. Maar de wereld had dat diploma nodig om mij te zien. Dit boek is het einde van dat wachten.</p>
+  </div>
+</section>
+
+<!-- H11 -->
+<section id="h11" class="grijs-bg">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 11</span>
+      Wat dit boek wil
+    </h1>
+    <h2 class="par" id="h11-1">11.1 &nbsp; Geen aanklacht. Een dissectie.</h2>
+    <p class="brood">Dit boek valt niemand aan. Het beschrijft een systeem dat werkt zoals het bedoeld is &mdash; en laat zien wat de kosten zijn van dat ontwerp. Er zijn duizenden mensen die in dezelfde stilte leven. Dit boek geeft die taal terug.</p>
+    <h2 class="par" id="h11-2">11.2 &nbsp; Voor wie dit is</h2>
+    <p class="brood">Voor iedereen die buiten de lijn viel. En ook voor de HR-medewerker, de manager, de directeur. Zij zijn niet de vijand. Zij zijn ook gevangen in een systeem dat ze niet zelf hebben gebouwd.</p>
+    <h2 class="par" id="h11-3">11.3 &nbsp; Vier richtingen</h2>
+    <div class="richt-grid">
+      <div class="richt-kaart">
+        <div class="nr">01</div>
+        <div class="titel">Selecteer op wat iemand deed, niet op wat iemand studeerde</div>
+        <div class="body">Vraag naar resultaten. Naar momenten waarop iemand iets oploste wat anderen niet konden.</div>
+      </div>
+      <div class="richt-kaart">
+        <div class="nr">02</div>
+        <div class="titel">Maak ruimte voor het buitenperspectief</div>
+        <div class="body">De meest waardevolle inzichten komen van mensen die er net buiten staan. Bouw dat structureel in.</div>
+      </div>
+      <div class="richt-kaart">
+        <div class="nr">03</div>
+        <div class="titel">Wees eerlijk over wat je echt meet</div>
+        <div class="body">Als een diploma-eis er staat omdat het altijd zo is geweest &mdash; schrap hem. Anders: houd hem. Maar wees eerlijk over het verschil.</div>
+      </div>
+      <div class="richt-kaart">
+        <div class="nr">04</div>
+        <div class="titel">Geef kansen voordat je beslist</div>
+        <div class="body">Proefperiodes, opdrachten, casussen. Laat mensen laten zien wie ze zijn voordat een procedure dat bepaalt.</div>
+      </div>
+    </div>
+    <h2 class="par" id="h11-4">11.4 &nbsp; Wat nu</h2>
+    <p class="brood">Dit document is de fundamentversie. De eerste laag van iets dat groter wordt. Maar het begint hier. Met de eerlijke stem van iemand die te lang gewacht heeft.</p>
+  </div>
+</section>
+
+<!-- ========================================================
+     DEEL V &mdash; NIEUWE PAGINA'S (20 bladzijden)
+     ======================================================== -->
+<div class="deel-header" style="background: linear-gradient(160deg, #0D0D0D 0%, #1A0A00 100%);">
+  <div class="deel-header-glow" style="background:radial-gradient(ellipse 60% 70% at 10% 50%, rgba(122,158,59,.22) 0%, transparent 60%);"></div>
+  <div class="deel-header-lijn" style="background:linear-gradient(180deg,var(--groen),var(--oranje));"></div>
+  <p class="deel-nr">Deel V &mdash; Nieuwe pagina's</p>
+  <h2>Wat nog niet gezegd was</h2>
+  <p class="ondertitel">Vier nieuwe hoofdstukken &mdash; geschreven als het boek al 800 pagina's telt</p>
+</div>
+
+<!-- H12 -->
+<section id="h12">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 12</span>
+      De architectuur van het buitenstaanderschap
+    </h1>
+
+    <!-- VIZ 8: schuurend diagram -->
+    <div class="viz">
+      <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="300" fill="#0D0D0D"/>
+        <text x="380" y="28" fill="rgba(255,255,255,.2)" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="2">TWEE SYSTEMEN IN DEZELFDE SAMENLEVING</text>
+        <!-- Binnenste cirkel: het systeem -->
+        <circle cx="280" cy="160" r="110" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1.5"/>
+        <text x="280" y="145" fill="rgba(255,255,255,.55)" font-size="12" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">HET SYSTEEM</text>
+        <text x="280" y="165" fill="rgba(255,255,255,.3)" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">Diploma / Certificaat</text>
+        <text x="280" y="183" fill="rgba(255,255,255,.3)" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">Functietitel / Protocol</text>
+        <!-- Buitenste punt: de buitenstaander -->
+        <circle cx="560" cy="160" r="70" fill="rgba(232,101,10,.08)" stroke="#E8650A" stroke-width="1.5"/>
+        <text x="560" y="150" fill="#E8650A" font-size="12" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">DE BUITENSTAANDER</text>
+        <text x="560" y="170" fill="rgba(232,101,10,.65)" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">Inzicht / Lef</text>
+        <text x="560" y="186" fill="rgba(232,101,10,.65)" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">Patroon / Karakter</text>
+        <!-- Verbindingspijlen: systeem vraagt buitenstaander -->
+        <path d="M 390 140 Q 470 100 494 130" fill="none" stroke="#7A9E3B" stroke-width="1.5" stroke-dasharray="5 3"/>
+        <polygon points="492,118 498,132 484,132" fill="#7A9E3B"/>
+        <text x="450" y="105" fill="#7A9E3B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">vraagt om hulp</text>
+        <!-- Pijl terug: systeem sluit buitenstaander uit -->
+        <path d="M 494 190 Q 470 225 390 200" fill="none" stroke="#CC1A1A" stroke-width="1.5" stroke-dasharray="5 3"/>
+        <polygon points="390,212 388,198 400,202" fill="#CC1A1A"/>
+        <text x="450" y="230" fill="#CC1A1A" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">sluit daarna uit</text>
+        <!-- Labels -->
+        <text x="380" y="278" fill="rgba(255,255,255,.18)" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">Het systeem heeft de buitenstaander nodig &mdash; maar erkent hem structureel niet</text>
+      </svg>
+      <div class="viz-cap" style="background:#0D0D0D;border-top:1px solid rgba(255,255,255,.06);">
+        <div class="viz-label" style="color:var(--groen);">De structuur in beeld</div>
+        <p style="color:rgba(255,255,255,.35);">Twee cirkels. Het systeem vraagt &mdash; groene pijl &mdash; om wat de buitenstaander heeft. Het systeem weigert daarna &mdash; rode pijl &mdash; de buitenstaander te erkennen. Dit is geen ongeluk. Dit is de logica van het systeem, consistent en herhaalbaar.</p>
+      </div>
+    </div>
+
+    <h2 class="par">12.1 &nbsp; Wat het betekent om structureel buiten te staan</h2>
+    <p class="brood">Het buitenstaanderschap van Carlos Erselina is geen keuze geweest. Het is een toewijzing &mdash; door een systeem dat al op negenjarige leeftijd besloot dat hij ergens anders thuishoorde. Maar wat dat systeem niet voorzag: buiten staan is een leerplaats. Een ruimte waar andere dingen groeien dan binnen. Scherpte die nergens aan hoeft te voldoen. Inzicht dat niet gecorrigeerd wordt door consensus.</p>
+    <p class="brood">De architectuur van het buitenstaanderschap heeft drie lagen. De eerste laag is de uitsluiting zelf: de lom-school, het ontbrekende diploma, de afwijzing op papier. De tweede laag is wat daarna groeit: het vermogen om patronen te zien die insiders niet zien, de onafhankelijkheid van het oordeel van de groep. De derde laag is de paradox: het systeem heeft die tweede laag nodig, maar erkent de prijs die de eerste laag heeft gekost niet.</p>
+
+    <div class="schok-banner">
+      <p>Elke organisatie die Carlos inhuurde, gaf daarmee toe dat haar eigen systeem had gefaald. Geen enkele organisatie heeft dat ooit hardop gezegd.</p>
+    </div>
+
+    <h2 class="par">12.2 &nbsp; De drie stadia van de buitenstaander</h2>
+    <div class="driekolom">
+      <div class="driekolom-kaart">
+        <div class="kop">Stadium I</div>
+        <p>Uitsluiting. Het systeem zegt: hier hoor jij niet bij. Dit stadium duurde voor Carlos van zijn negende tot ver in zijn volwassenheid. Het laat littekens. Die verdwijnen niet. Ze worden gereedschap.</p>
+      </div>
+      <div class="driekolom-kaart">
+        <div class="kop">Stadium II</div>
+        <p>Functioneren in het vacuüm. De buitenstaander leert werken zonder erkenning. Resultaten worden de enige valuta. Dit stadium maakt mensen ongewoon goed in wat ze doen &mdash; en ongewoon eenzaam.</p>
+      </div>
+      <div class="driekolom-kaart">
+        <div class="kop">Stadium III</div>
+        <p>Stem vinden. Het besluit om te spreken ondanks het systeem, niet om het systeem te overtuigen maar omdat zwijgen duurder is geworden dan spreken. Dit boek is stadium III.</p>
+      </div>
+    </div>
+
+    <h2 class="par">12.3 &nbsp; Waarom het systeem de buitenstaander niet kan integreren</h2>
+    <p class="brood">Het systeem is niet wreed. Het is consistent. Het integreert de buitenstaander niet omdat integratie het systeem zou dwingen zijn eigen uitgangspunten te herzien. En dat is een prijs die systemen niet betalen tenzij ze geen andere keuze hebben. De buitenstaander is nuttig zolang hij de brand blust. Daarna is hij een vraagstuk dat het systeem liever niet stelt.</p>
+
+    <h2 class="par">12.4 &nbsp; De prijs voor de organisatie</h2>
+    <p class="brood">Elke organisatie die systematisch buitenstaanders uitsluit, bouwt blinde vlekken in. Die blinde vlekken worden zichtbaar in crises. Dan belt de organisatie de mensen die ze eerder hebben geweigerd aan te nemen. Dit is geen theorie. Dit is de werkelijkheid van honderd opdrachtgevers en nul aanstellingen.</p>
+  </div>
+</section>
+
+<!-- H13 -->
+<section id="h13" class="grijs-bg">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 13</span>
+      Wat organisaties werkelijk zoeken &mdash;<br>maar niet durven zeggen
+    </h1>
+
+    <!-- VIZ 9: wat ze zeggen vs wat ze zoeken -->
+    <div class="viz">
+      <svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="260" fill="white"/>
+        <text x="380" y="22" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="2">WAT ZE ZEGGEN VS. WAT ZE ZOEKEN</text>
+        <!-- Headers -->
+        <rect x="30"  y="36" width="320" height="36" rx="3" fill="#3A3A3A"/>
+        <text x="190" y="60" fill="rgba(255,255,255,.65)" font-size="12" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600" letter-spacing="1">WAT ZE IN DE VACATURE ZETTEN</text>
+        <rect x="410" y="36" width="320" height="36" rx="3" fill="#E8650A"/>
+        <text x="570" y="60" fill="rgba(255,255,255,.85)" font-size="12" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600" letter-spacing="1">WAT ZE WERKELIJK ZOEKEN</text>
+        <!-- Rijen -->
+        <line x1="30" y1="85" x2="730" y2="85" stroke="#E0DDD8" stroke-width="1"/>
+        <text x="190" y="106" fill="#6B6B6B" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">"Academisch werk- en denkniveau"</text>
+        <text x="570" y="106" fill="#3A3A3A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Iemand die ziet wat wij niet zien</text>
+        <line x1="30" y1="120" x2="730" y2="120" stroke="#E0DDD8" stroke-width="1"/>
+        <text x="190" y="141" fill="#6B6B6B" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">"Minimaal 5 jaar relevante ervaring"</text>
+        <text x="570" y="141" fill="#3A3A3A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Iemand die de crisis overleeft</text>
+        <line x1="30" y1="155" x2="730" y2="155" stroke="#E0DDD8" stroke-width="1"/>
+        <text x="190" y="176" fill="#6B6B6B" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">"Uitstekende communicatieve vaardigh."</text>
+        <text x="570" y="176" fill="#3A3A3A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Iemand die moeilijk nieuws brengt</text>
+        <line x1="30" y1="190" x2="730" y2="190" stroke="#E0DDD8" stroke-width="1"/>
+        <text x="190" y="211" fill="#6B6B6B" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">"Aanpakker / verbinder / resultaatgericht"</text>
+        <text x="570" y="211" fill="#3A3A3A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle">Iemand die doet wat wij verzwijgen</text>
+        <line x1="30" y1="225" x2="730" y2="225" stroke="#E0DDD8" stroke-width="1"/>
+        <text x="380" y="248" fill="#6B6B6B" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">De kloof tussen de twee kolommen is precies het talent dat het systeem systematisch buitensluit</text>
+        <!-- Verticale scheiding -->
+        <line x1="380" y1="36" x2="380" y2="225" stroke="#E0DDD8" stroke-width="1"/>
+      </svg>
+      <div class="viz-cap">
+        <div class="viz-label">De kloof tussen tekst en behoefte</div>
+        <p>Wat organisaties in vacatureteksten zetten en wat ze werkelijk nodig hebben, zijn twee fundamenteel verschillende dingen. De eerste kolom is het systeem. De tweede kolom is de werkelijkheid. Carlos leefde in de tweede kolom en werd beoordeeld op de eerste.</p>
+      </div>
+    </div>
+
+    <h2 class="par">13.1 &nbsp; De verborgen functiebeschrijving</h2>
+    <p class="brood">Elke organisatie die mij inhuurde, had een verborgen functiebeschrijving die nooit op papier heeft gestaan. Die beschrijving luidde ongeveer zo: iemand die ziet wat wij niet zien, die zegt wat wij niet durven zeggen, die oplost wat wij hebben laten verslepen, en die daarna weer vertrekt zodat wij hem niet structureel hoeven te erkennen.</p>
+    <p class="brood">Ik paste bij die beschrijving. Op de officiële functiebeschrijving met de diploma-eis paste ik niet. Het verschil tussen die twee beschrijvingen is het onderwerp van dit hoofdstuk.</p>
+
+    <h2 class="par">13.2 &nbsp; Wat een directeur werkelijk wil weten</h2>
+    <p class="brood">Geen enkele directeur belt een externe adviseur om te vragen of hij over de juiste papieren beschikt. Een directeur belt omdat er een probleem is dat hij niet kan benoemen, laat staan oplossen, met de mensen die hij wel heeft aangenomen. Dat is geen verwijt aan de directeur. Het is een structurele eigenschap van elk selectiesysteem: het maximaliseert conformiteit en minimaliseert afwijking. Afwijking is soms precies wat een organisatie in crisis nodig heeft.</p>
+
+    <h2 class="par">13.3 &nbsp; Het moment van de waarheid</h2>
+    <p class="brood">Het moment van de waarheid in elk van mijn opdrachten was niet het eerste gesprek, niet het contract, niet de aanbevelingsbrief. Het moment van de waarheid was de eerste vergadering. Het moment waarop ik iets zei wat niemand had durven zeggen. Het moment waarop de kamer even stil werd. Dat moment bewijst meer dan elk diploma dat ooit is uitgereikt.</p>
+
+    <div class="pullquote">
+      <p>"Geen enkele directeur belt een externe adviseur om te vragen of hij over de juiste papieren beschikt."</p>
+      <span class="bron">Hoofdstuk 13 &mdash; Wat organisaties werkelijk zoeken</span>
+    </div>
+
+    <h2 class="par">13.4 &nbsp; De drie soorten opdrachten die hij nooit aannam</h2>
+    <p class="brood">Er zijn drie typen opdrachten die ik structureel heb geweigerd. Ten eerste: opdrachten waarbij de opdrachtgever het antwoord al had en slechts een bevestiging zocht. Ten tweede: opdrachten waarbij de opdracht zelf een symptoom was van een probleem dat de organisatie niet wilde benoemen. Ten derde: opdrachten waarbij mijn functie was om de schuld te dragen voor beslissingen die de organisatie zelf had genomen. Elk van die drie typen had ik kunnen aannemen. Ik heb ze niet aangenomen.</p>
+    <p class="brood">Die weigering kostte mij omzet. Ze gaf mij iets terug dat meer waard is: de zekerheid dat mijn naam verbonden is aan werk dat ik werkelijk heb gedaan, niet aan werk waarbij ik toeschouwer was.</p>
+  </div>
+</section>
+
+<!-- H14 -->
+<section id="h14">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 14</span>
+      De ontleding van een systeem<br>dat niet kapot kan gaan
+    </h1>
+
+    <!-- VIZ 10: systeem als organisme -->
+    <div class="viz">
+      <svg viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="280" fill="#0D0D0D"/>
+        <text x="380" y="26" fill="rgba(255,255,255,.2)" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="2">HET SYSTEEM ALS ZICHZELF-HERSTELLEND ORGANISME</text>
+        <!-- Circulaire pijlen -->
+        <circle cx="380" cy="152" r="90" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="40"/>
+        <!-- Fase 1 -->
+        <circle cx="380" cy="62"  r="28" fill="#3A3A3A" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+        <text x="380" y="57"  fill="rgba(255,255,255,.7)" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Selectie</text>
+        <text x="380" y="70"  fill="rgba(255,255,255,.35)" font-size="8" font-family="DM Mono,monospace" text-anchor="middle">op diploma</text>
+        <!-- Fase 2 -->
+        <circle cx="458" cy="104" r="28" fill="#3A3A3A" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+        <text x="458" y="99"  fill="rgba(255,255,255,.7)" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Aanstelling</text>
+        <text x="458" y="112" fill="rgba(255,255,255,.35)" font-size="8" font-family="DM Mono,monospace" text-anchor="middle">conformist</text>
+        <!-- Fase 3 -->
+        <circle cx="458" cy="200" r="28" fill="#3A3A3A" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+        <text x="458" y="195" fill="rgba(255,255,255,.7)" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Crisis</text>
+        <text x="458" y="208" fill="rgba(255,255,255,.35)" font-size="8" font-family="DM Mono,monospace" text-anchor="middle">blinde vlek</text>
+        <!-- Fase 4 -->
+        <circle cx="302" cy="200" r="28" fill="#E8650A" stroke="rgba(232,101,10,.3)" stroke-width="1"/>
+        <text x="302" y="195" fill="white" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Inhuur</text>
+        <text x="302" y="208" fill="rgba(255,255,255,.6)" font-size="8" font-family="DM Mono,monospace" text-anchor="middle">buitenstaander</text>
+        <!-- Fase 5 -->
+        <circle cx="302" cy="104" r="28" fill="#3A3A3A" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+        <text x="302" y="99"  fill="rgba(255,255,255,.7)" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Herstel</text>
+        <text x="302" y="112" fill="rgba(255,255,255,.35)" font-size="8" font-family="DM Mono,monospace" text-anchor="middle">systeem intact</text>
+        <!-- Pijlen tussen fases -->
+        <line x1="406" y1="74"  x2="440" y2="90"  stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+        <line x1="458" y1="132" x2="458" y2="172" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+        <line x1="430" y1="210" x2="330" y2="210" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+        <line x1="302" y1="172" x2="302" y2="132" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+        <line x1="330" y1="92"  x2="352" y2="80"  stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
+        <!-- Centrale tekst -->
+        <text x="380" y="148" fill="rgba(255,255,255,.12)" font-size="24" font-family="Playfair Display,serif" font-weight="900" font-style="italic" text-anchor="middle">systeem</text>
+        <text x="380" y="168" fill="rgba(255,255,255,.08)" font-size="14" font-family="DM Mono,monospace" text-anchor="middle">herstelt zichzelf</text>
+        <!-- Label -->
+        <text x="380" y="262" fill="rgba(255,255,255,.15)" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">De oranje fase is de buitenstaander &mdash; tijdelijk, functioneel, nooit structureel</text>
+      </svg>
+      <div class="viz-cap" style="background:#0D0D0D;border-top:1px solid rgba(255,255,255,.06);">
+        <div class="viz-label" style="color:var(--groen);">Het systeem als organisme</div>
+        <p style="color:rgba(255,255,255,.3);">Het systeem doorloopt een cyclus: selectie op diploma, aanstelling van conformisten, crisis door blinde vlekken, inhuur van de buitenstaander (oranje), herstel, en terug naar af. De buitenstaander is de oranje fase &mdash; noodzakelijk, tijdelijk, nooit erkend.</p>
+      </div>
+    </div>
+
+    <h2 class="par">14.1 &nbsp; Waarom het systeem niet kapot gaat</h2>
+    <p class="brood">Het systeem gaat niet kapot omdat het een ingebouwd herstelprotocol heeft. Dat protocol is de externe adviseur, de interim-manager, de crisisspecialist &mdash; met andere woorden: de buitenstaander. Elke keer dat het systeem faalt, schakelt het de mensen in die het heeft buitengesloten. Daarna herstelt het zichzelf en gaat het door alsof er niets is gebeurd.</p>
+    <p class="brood">Dit is geen cynisme. Dit is de mechanische beschrijving van hoe systemen werken. Systemen zijn ontworpen om zichzelf te handhaven, niet om zichzelf te verbeteren. Verbetering vereist het erkennen van de fout. En foutherkenning vereist het erkennen van de buitenstaander die de fout zichtbaar heeft gemaakt. Dat is de stap die het systeem structureel overslaat.</p>
+
+    <h2 class="par">14.2 &nbsp; De vijf mechanismes van zelfhandhaving</h2>
+    <p class="brood">Het systeem handhaaft zichzelf via vijf mechanismes. Het eerste mechanisme is de definitie van kwalificatie: wie niet aan de diploma-eis voldoet, komt de procedure niet in. Het tweede is de normalisering van de uitkomst: wie is aangenomen op basis van het systeem, legitimeert het systeem door zijn aanwezigheid. Het derde is de delegitimering van de uitzondering: wie buiten het systeem succesvol is, wordt beschreven als een uitzondering die de regel bevestigt. Het vierde is de aanpassing van de herinnering: na de crisis wordt de rol van de externe adviseur administratief geminimaliseerd. Het vijfde is de herbevestiging van de procedure: na elk falen wordt de procedure aangescherpt, nooit afgeschaft.</p>
+
+    <h2 class="par">14.3 &nbsp; Het moment waarop het systeem zichzelf verriedt</h2>
+    <p class="brood">Het moment waarop het systeem zichzelf verriedt, is het moment van het crisistelefoontje. Op dat moment roept het systeem expliciet om de mensen die het heeft buitengesloten. Dat telefoontje is een bekentenis. Een bekentenis die zelden hardop wordt uitgesproken, maar die in de handeling zelf onmiskenbaar aanwezig is.</p>
+    <p class="brood">Ik heb die bekentenis honderd keer ontvangen. Honderd keer als telefoontje, als e-mail, als spoedverzoek. Nooit als formele erkenning. Die erkenning is wat dit boek vraagt.</p>
+
+    <div class="pullquote">
+      <p>"Het crisistelefoontje is een bekentenis. Een bekentenis die zelden hardop wordt uitgesproken &mdash; maar die in de handeling zelf onmiskenbaar aanwezig is."</p>
+      <span class="bron">Hoofdstuk 14 &mdash; De ontleding van een systeem dat niet kapot kan gaan</span>
+    </div>
+  </div>
+</section>
+
+<!-- H15 -->
+<section id="h15" class="grijs-bg">
+  <div class="binnenste">
+    <h1 class="hfd" style="border-top:none;padding-top:0;margin-top:0;">
+      <span class="hfd-nr">Hoofdstuk 15</span>
+      De mens zonder categorie
+    </h1>
+
+    <!-- VIZ 11: wie valt buiten alle hokjes -->
+    <div class="viz">
+      <svg viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="270" fill="white"/>
+        <text x="380" y="22" fill="#B8B5B0" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" letter-spacing="2">WIE PAST IN WELK HOKJE &mdash; EN WIE NIET</text>
+        <!-- Categorieen -->
+        <rect x="30"  y="40" width="150" height="100" rx="4" fill="#F4F2EF" stroke="#E0DDD8" stroke-width="1"/>
+        <text x="105" y="68"  fill="#3A3A3A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Academicus</text>
+        <text x="105" y="88"  fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Diploma</text>
+        <text x="105" y="104" fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Publicaties</text>
+        <text x="105" y="120" fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Peergroup</text>
+
+        <rect x="200" y="40" width="150" height="100" rx="4" fill="#F4F2EF" stroke="#E0DDD8" stroke-width="1"/>
+        <text x="275" y="68"  fill="#3A3A3A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Ondernemer</text>
+        <text x="275" y="88"  fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">KvK-inschrijving</text>
+        <text x="275" y="104" fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Omzet / Groei</text>
+        <text x="275" y="120" fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Medewerkers</text>
+
+        <rect x="370" y="40" width="150" height="100" rx="4" fill="#F4F2EF" stroke="#E0DDD8" stroke-width="1"/>
+        <text x="445" y="68"  fill="#3A3A3A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Specialist</text>
+        <text x="445" y="88"  fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Certificering</text>
+        <text x="445" y="104" fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Sectorkennis</text>
+        <text x="445" y="120" fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Domeinervaring</text>
+
+        <rect x="540" y="40" width="150" height="100" rx="4" fill="#F4F2EF" stroke="#E0DDD8" stroke-width="1"/>
+        <text x="615" y="68"  fill="#3A3A3A" font-size="11" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Manager</text>
+        <text x="615" y="88"  fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Hierar. positie</text>
+        <text x="615" y="104" fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Mensen aansturen</text>
+        <text x="615" y="120" fill="#6B6B6B" font-size="9" font-family="DM Mono,monospace" text-anchor="middle">Resultaatverantw.</text>
+
+        <!-- Pijlen omlaag naar vraagteken -->
+        <line x1="105" y1="140" x2="340" y2="185" stroke="#E0DDD8" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="275" y1="140" x2="350" y2="185" stroke="#E0DDD8" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="445" y1="140" x2="390" y2="185" stroke="#E0DDD8" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="615" y1="140" x2="400" y2="185" stroke="#E0DDD8" stroke-width="1" stroke-dasharray="4 3"/>
+
+        <!-- Carlos: past nergens -->
+        <circle cx="370" cy="210" r="42" fill="rgba(232,101,10,.08)" stroke="#E8650A" stroke-width="2" stroke-dasharray="6 3"/>
+        <text x="370" y="202" fill="#E8650A" font-size="12" font-family="DM Mono,monospace" text-anchor="middle" font-weight="600">Erselina</text>
+        <text x="370" y="218" fill="rgba(232,101,10,.65)" font-size="10" font-family="DM Mono,monospace" text-anchor="middle">Past nergens</text>
+        <text x="370" y="232" fill="rgba(232,101,10,.45)" font-size="9" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">maar alles tegelijk</text>
+
+        <text x="380" y="262" fill="#6B6B6B" font-size="10" font-family="DM Mono,monospace" text-anchor="middle" font-style="italic">De mens zonder categorie is zichtbaar voor wie goed kijkt &mdash; en onzichtbaar voor het systeem</text>
+      </svg>
+      <div class="viz-cap">
+        <div class="viz-label">Buiten alle hokjes</div>
+        <p>Het systeem werkt met categorieen: academicus, ondernemer, specialist, manager. Erselina past in geen van die vier &mdash; en tegelijkertijd in alle vier. Het systeem heeft geen hokje voor de mens zonder categorie. Dat is zijn kracht. En zijn structurele handicap.</p>
+      </div>
+    </div>
+
+    <h2 class="par">15.1 &nbsp; Wie is de mens zonder categorie</h2>
+    <p class="brood">De mens zonder categorie is niet iemand die ergens tussen twee vakjes valt. Hij valt buiten alle vakjes tegelijk. Hij is te academisch voor de praktijk, te praktisch voor de academie. Te ongestructureerd voor de bureaucratie, te scherp voor het middenkader. Te eerlijk voor de politiek, te politiek bewust voor de oprechtheid. De combinatie van die eigenschappen is niet aantrekkelijk voor systemen. Het is onvermijdelijk voor iemand die buiten is opgegroeid.</p>
+
+    <h2 class="par">15.2 &nbsp; Wat de mens zonder categorie doet met zijn onmogelijkheid</h2>
+    <p class="brood">Twee dingen. Sommige mensen zonder categorie maken zichzelf kleiner. Ze leren zwijgen op de plekken waar hun afwijking zichtbaar is. Ze passen hun houding aan tot de rand van het acceptabele. Ze worden minder dan ze zijn, om te worden wat het systeem verwacht. Dat is een prijs die ik heb betaald op momenten dat ik het niet doorhad. En het is een prijs die te hoog is.</p>
+    <p class="brood">Andere mensen zonder categorie gebruiken hun onmogelijkheid als gereedschap. Ze staan op plekken waar niemand anders staat. Ze zeggen wat niemand anders zegt. Ze lossen op wat niemand anders oplost. Dat is wat dit boek beschrijft. Niet als held-verhaal. Als feitenrelaas.</p>
+
+    <h2 class="par">15.3 &nbsp; De vraag die dit boek stelt aan het systeem</h2>
+    <p class="brood">De vraag is niet: waarom heeft het systeem mij buitengesloten? Die vraag ken ik het antwoord op. Het systeem deed wat systemen doen: het hanteerde zijn eigen criteria consistent. De vraag is: wat heeft het systeem daarmee verloren? Wat kost het een organisatie, een samenleving, een cultuur om de mens zonder categorie structureel buiten te houden?</p>
+    <p class="brood">Het antwoord is niet abstract. Het antwoord is dit boek. Een stem die dertig jaar te laat komt. Die dertig jaar vertegenwoordigt de kosten van een systeem dat consistent is maar niet wijs.</p>
+
+    <div class="pullquote">
+      <p>"Een stem die dertig jaar te laat komt. Die dertig jaar vertegenwoordigt de kosten van een systeem dat consistent is &mdash; maar niet wijs."</p>
+      <span class="bron">Hoofdstuk 15 &mdash; De mens zonder categorie</span>
+    </div>
+
+    <h2 class="par">15.4 &nbsp; Wat nu volgt</h2>
+    <p class="brood">Dit zijn de voorbereidingen. De fundamentversie van een boek dat zo'n achthonderd pagina's gaat beslaan. Wat hier staat, is de ruggengraat. De rest &mdash; de volledige opdrachtgeversverhalen, de analyses van concrete organisaties, de gesprekken met de mensen aan de andere kant van de tafel, de theoretische onderbouwing &mdash; dat volgt.</p>
+    <p class="brood">Dit boek wordt niet geschreven om het systeem te overtuigen. Het systeem overtuigt zichzelf niet. Dit boek wordt geschreven voor de mensen die herkennen wat hier staat. Die het gevoel kennen dat je intelligent bent maar niet wordt gezien. Die weten dat ze meer kunnen dan het systeem ze gunt. Die al te lang wachten op iemand die zegt: jij bent niet fout. Het systeem is onvolledig.</p>
+    <p class="brood">Dit is die stem.</p>
+  </div>
+</section>
+
+<!-- ========================================================
+     NAWOORD
+     ======================================================== -->
+<div class="nawoord" id="nawoord">
+  <p style="font-family:var(--mono-font);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--oranje);margin-bottom:22px;">Nawoord</p>
+  <h2>Nooit uitgeleerd</h2>
+  <p>Mijn vader had gelijk.</p>
+  <p>Als je uitgeleerd bent, ben je dood.</p>
+  <p>Ik schrijf dit boek op een leeftijd waarop mensen in mijn omgeving beginnen af te bouwen. Ik bouw op. Niet uit dwang, maar omdat ik eindelijk de ruimte voel om te zeggen wat ik altijd al wist.</p>
+  <p>Dat talent geen papiertje nodig heeft. Dat scherpte niet op school wordt aangeleerd. Dat de mensen die de wereld werkelijk bewegen, niet altijd de mensen zijn die de wereld heeft goedgekeurd.</p>
+  <p>Dit is mijn stem. Eindelijk. Volledig. Zonder apologie.</p>
+  <p class="wendy">Voor Wendy. Die wist dat dit moment zou komen &mdash; en er alles aan deed om het mogelijk te maken.</p>
+</div>
+
+<!-- COLOFON -->
+<div class="colofon">
+  <strong>Talent Zonder Diploma &mdash; Het systeem zal dit niet leuk vinden</strong><br>
+  <strong>De Fundamentversie 1.0</strong><br><br>
+  Carlos G.V. Erselina &mdash; Versie 1.0 &mdash; 2026<br>
+  Alle rechten voorbehouden. Niets uit deze publicatie mag worden overgenomen zonder schriftelijke toestemming van de auteur.
+</div>
+
+<a href="#top" id="tnt">Naar boven</a>
+
+<script>
+  // Voortgangsbalk
+  window.addEventListener('scroll', function() {
+    var d = document.documentElement;
+    var pct = d.scrollTop / (d.scrollHeight - d.clientHeight) * 100;
+    document.getElementById('vb').style.width = pct + '%';
+    var tnt = document.getElementById('tnt');
+    if (d.scrollTop > 500) { tnt.classList.add('zichtbaar'); }
+    else { tnt.classList.remove('zichtbaar'); }
+  });
+</script>
+</body>
+</html>
